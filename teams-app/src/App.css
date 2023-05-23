@@ -24,6 +24,16 @@
   border-radius: 10px;
 }
 
+.stats{
+height: 40px;
+margin-top: 20px;
+}
+
+.event{
+  height: 40px;
+  background-color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

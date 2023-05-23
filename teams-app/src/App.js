@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import ScoreCard from "./components/ScoreCard";
+import EventItem from "./components/EventItem";
 
 class App extends React.Component {
   state = {
@@ -15,9 +16,9 @@ class App extends React.Component {
       team: team,
       event: event,
     };
-    console.log(eventData)
     const newScores = this.state.scores;
     newScores.push(eventData);
+    console.log(newScores)
     this.setState({ scores: newScores, player: "" });
   }
 
@@ -25,7 +26,7 @@ class App extends React.Component {
     const teamScores = this.state.scores.filter((item, index) => {
       return item.team === team && item.event === "goal";
     });
-    console.log(teamScores)
+    
     return teamScores.length;
   }
 
@@ -71,6 +72,16 @@ class App extends React.Component {
           placeholder="Unesite ime fudbalera"
           
         />
+        <div className="stats">
+          {this.state.scores.map((item, index) => {
+            return <EventItem key={ index} item={item } />
+            // if (item.event === 'yellow card' && item.team === "home") {
+            //   return <div className="event" style={{backgroundColor:'yellow', textAlign:"left"}}>
+            //     {item.player}
+            //   </div>
+            // }
+          }) }
+        </div>
       </div>
     );
   }
