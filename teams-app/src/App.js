@@ -8,28 +8,39 @@ class App extends React.Component {
     scores: [],
     gameover: false,
     player: "",
+    firstTeam: 0,
+    secondTeam: 0
   };
 
   goalScored(team, event) {
-    const eventData = {
-      player: this.state.player,
-      team: team,
-      event: event,
-    };
-    const newScores = this.state.scores;
-    newScores.push(eventData);
-    console.log(newScores)
-    this.setState({ scores: newScores, player: "" });
-  }
+  
+      const eventData = {
+        player: this.state.player,
+        team: team,
+        event: event,
+      };
+      const newScores = this.state.scores;
+      newScores.push(eventData);
+      this.setState({ scores: newScores, player: "" });
+      console.log(this.state.scores)
+    
+    }
 
   getGoalNumber(team) {
     const teamScores = this.state.scores.filter((item, index) => {
       return item.team === team && item.event === "goal";
     });
-    
-    return teamScores.length;
+  
+    return teamScores.length
   }
 
+  componentDidUpdate() {
+    if (this.state.gameover === false) {
+      if (this.state.firstTeam === 5 || this.state.secondTeam === 5) {
+        this.setState({gameover: true})
+      }
+    }
+  }
   render() {
     const homeScores = this.getGoalNumber("home");
     const guestScores = this.getGoalNumber("guest");
@@ -40,7 +51,14 @@ class App extends React.Component {
             name="Home"
             score={homeScores}
             goal={() => {
-              this.goalScored("home", "goal");
+              if (this.state.gameover === false) {
+                this.goalScored("home", "goal");
+                this.setState({firstTeam: this.state.firstTeam +1})
+              }
+            
+              // else {
+              //   this.setState({scores: []})
+              // }
             }}
             yellowCard={() => {
               this.goalScored("home", "yellow card")
@@ -53,7 +71,14 @@ class App extends React.Component {
             name="Guest"
             score={guestScores}
             goal={() => {
-              this.goalScored("guest", "goal");
+              if (this.state.gameover === false) {
+                this.goalScored("guest", "goal");
+                this.setState({secondTeam: this.state.secondTeam +1})
+
+              }
+              // else {
+              //   this.setState({scores: []})
+              // }
             }}
             yellowCard={() => {
               this.goalScored("guest", "yellow card")
@@ -74,7 +99,8 @@ class App extends React.Component {
         />
         <div className="stats">
           {this.state.scores.map((item, index) => {
-            return <EventItem key={ index} item={item } />
+                          return <EventItem key={ index} item={item } />
+       
             // if (item.event === 'yellow card' && item.team === "home") {
             //   return <div className="event" style={{backgroundColor:'yellow', textAlign:"left"}}>
             //     {item.player}

@@ -3,6 +3,8 @@ import React from 'react';
 
 class EventItem extends React.Component{
 
+
+
     render() {
 
         let backGcolor = 'white';
