@@ -47,6 +47,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="scores-container">
+          <div className="item__1">
           <ScoreCard
             name="Home"
             score={homeScores}
@@ -87,8 +88,8 @@ class App extends React.Component {
               this.goalScored("guest", "red card")
             }}
           />
-        </div>
-        <input
+ </div>
+          <input
           value={this.state.player}
           onChange={(event) => {
             const value = event.target.value;
@@ -97,6 +98,8 @@ class App extends React.Component {
           placeholder="Unesite ime fudbalera"
           
         />
+        </div>
+        
         <div className="stats">
           {this.state.scores.map((item, index) => {
                           return <EventItem key={ index} item={item } />

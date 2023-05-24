@@ -11,11 +11,12 @@ class ScoreCard extends React.Component {
           onClick={(e) => {
             this.props.goal();
           }}
+        
         >
-          Goal!
+          Goal
             </button>
-            <button onClick={(e) =>{this.props.yellowCard()}}>Yellow Card</button>
-            <button onClick={(e) =>{this.props.redCard()}}>Red Card</button>
+            <button onClick={(e) =>{this.props.yellowCard()}} className="yellow__card">Yellow Card</button>
+            <button onClick={(e) =>{this.props.redCard()}} className="red__card">Red Card</button>
 
       </div>
     );
