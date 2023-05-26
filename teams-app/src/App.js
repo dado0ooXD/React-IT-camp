@@ -52,7 +52,7 @@ class App extends React.Component {
             name="Home"
             score={homeScores}
             goal={() => {
-              if (this.state.gameover === false) {
+              if (this.state.gameover === false && this.state.player !== "" ) {
                 this.goalScored("home", "goal");
                 this.setState({firstTeam: this.state.firstTeam +1})
               }
@@ -62,17 +62,21 @@ class App extends React.Component {
               // }
             }}
             yellowCard={() => {
-              this.goalScored("home", "yellow card")
+             if (this.state.player !== "") {
+                this.goalScored("home", "yellow card")
+              }
             }}
               redCard={() => {
-              this.goalScored("home", "red card")
+                if (this.state.player !== "") {
+                this.goalScored("home", "red card")
+              }
             }}
           />
           <ScoreCard
             name="Guest"
             score={guestScores}
             goal={() => {
-              if (this.state.gameover === false) {
+              if (this.state.gameover === false && this.state.player !== "") {
                 this.goalScored("guest", "goal");
                 this.setState({secondTeam: this.state.secondTeam +1})
 
@@ -82,10 +86,14 @@ class App extends React.Component {
               // }
             }}
             yellowCard={() => {
-              this.goalScored("guest", "yellow card")
+              if (this.state.player !== "") {
+                this.goalScored("guest", "yellow card")
+              }
             }}
             redCard={() => {
-              this.goalScored("guest", "red card")
+              if (this.state.player !== "") {
+                this.goalScored("guest", "red card")
+              }
             }}
           />
  </div>
