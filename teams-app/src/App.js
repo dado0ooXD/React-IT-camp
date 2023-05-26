@@ -96,7 +96,7 @@ class App extends React.Component {
               }
             }}
           />
- </div>
+      </div>
           <input
           value={this.state.player}
           onChange={(event) => {
