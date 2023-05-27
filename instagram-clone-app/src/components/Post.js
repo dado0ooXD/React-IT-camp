@@ -1,6 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 
 const Post = (props) => {
+  const isPostLikedByMe = props.post.likes.includes(props.userName);
+  let likeButtonText = 'Like';
+  if (isPostLikedByMe) {
+    likeButtonText = "Liked"
+  }
+
+
   return (
     <div className="post">
       <div>
@@ -12,7 +19,7 @@ const Post = (props) => {
             props.likeHandler(props.post.id);
           }}
         >
-          Like
+          {likeButtonText}
         </button>
         <button
           onClick={() => {
