@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Post = (props) => {
   const isPostLikedByMe = props.post.likes.includes(props.userName);
@@ -7,9 +7,16 @@ const Post = (props) => {
     likeButtonText = "Liked"
   }
 
+  const [showInput, setInput] = useState(false)
+  // useEffect(() =>{setTimeout(() => { setInputComm("none")} ,5000)}, [inputComm]);
+  const showCommentInput = () => {
+    setInput(true)
+  }
+  
+  
 
   return (
-    <div className="post">
+    <div className="post" onClick={showCommentInput}>
       <div>
         <img className="post-img" src={props.post.imageUrl}></img>
       </div>
@@ -36,13 +43,15 @@ const Post = (props) => {
           Share
         </button>
       </div>
+     
       <div>
-        <p className="post-likes">{props.post.likes.length}</p>
+        <p className="post-likes">{props.post.likes.length} and others</p>
         <p className="post-description">
           <span className="username">{props.post.username}</span>{" "}
           <span>{props.post.description}</span>
         </p>
       </div>
+      {showInput && <input type="text"/>}
     </div>
   );
 };

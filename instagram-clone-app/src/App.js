@@ -6,6 +6,8 @@ import React, { useState } from "react";
 function App() {
   const myUsername = "mmuminovic";
   const [data, setData] = useState(mydata);
+  
+ 
 
   const likeHandler = (postId) => {
     const newData = data.map((item, index) => {
