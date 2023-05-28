@@ -7,12 +7,25 @@ const Post = (props) => {
     likeButtonText = "Liked"
   }
 
-  const [showInput, setInput] = useState(false)
+  const [showInput, setShowInput] = useState("none");
+  const [inputVal, setInputVal] = useState('');
+  const [arr, setArr] = useState({})
+
   // useEffect(() =>{setTimeout(() => { setInputComm("none")} ,5000)}, [inputComm]);
   const showCommentInput = () => {
-    setInput(true)
+    setShowInput("flex")
   }
   
+  const addItemToArray = () => {
+    setArr({username: "" , comm: inputVal, id: Math.floor(Math.random() * 1000)})
+    props.post.comments.push(arr)
+    console.log(props.post.comments);
+    setInputVal("");
+    console.log(arr.id)
+  }
+
+    console.log(props.post.comments.id)
+
   
 
   return (
@@ -29,9 +42,9 @@ const Post = (props) => {
           {likeButtonText}
         </button>
         <button
-          onClick={() => {
-            console.log("comment");
-          }}
+          onClick={
+            addItemToArray
+        }
         >
           Comment
         </button>
@@ -51,7 +64,13 @@ const Post = (props) => {
           <span>{props.post.description}</span>
         </p>
       </div>
-      {showInput && <input type="text"/>}
+      <input type="text" style={{display:showInput}} value={inputVal} onChange={(e) => setInputVal(e.target.value)}  placeholder="Leave your comment"/>
+      {props.post.comments.map((item, index) => {
+        return <div key={item.id}>
+          <p key={item.id}> username: {item.username}</p>
+          <p key={item.id}> comment: {item.comm }</p>
+        </div>
+      })}
     </div>
   );
 };

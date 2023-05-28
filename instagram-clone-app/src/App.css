@@ -60,3 +60,17 @@
   font-weight: bold;
 }
 
+input{
+  margin-top: 10px;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: lightgray;
+  padding: 0 5px;
+  outline: none;
+  
+}
+
+::placeholder {
+  font-size: 11px;
+  color: black;
+}
