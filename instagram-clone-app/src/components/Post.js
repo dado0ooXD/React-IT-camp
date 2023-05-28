@@ -17,15 +17,15 @@ const Post = (props) => {
   }
   
   const addItemToArray = () => {
-    setArr({username: "" , comm: inputVal, id: Math.floor(Math.random() * 1000)})
+    setArr({ comm: inputVal, id: Math.floor(Math.random() * 1000)})
     props.post.comments.push(arr)
     console.log(props.post.comments);
     setInputVal("");
     console.log(arr.id)
   }
 
-    console.log(props.post.comments.id)
-
+    // useEffect(()=>{console.log(props.post)},[])
+    console.log(props.post)
   
 
   return (
@@ -63,11 +63,11 @@ const Post = (props) => {
           <span className="username">{props.post.username}</span>{" "}
           <span>{props.post.description}</span>
         </p>
+        <p className="post-comments">comments: {props.post.comments.length }</p>
       </div>
       <input type="text" style={{display:showInput}} value={inputVal} onChange={(e) => setInputVal(e.target.value)}  placeholder="Leave your comment"/>
       {props.post.comments.map((item, index) => {
         return <div key={item.id}>
-          <p key={item.id}> username: {item.username}</p>
           <p key={item.id}> comment: {item.comm }</p>
         </div>
       })}

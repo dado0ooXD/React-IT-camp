@@ -63,7 +63,6 @@ input{
   margin-top: 10px;
   border: none;
   border-bottom: 1px solid gray;
-  
   padding: 0 5px;
   outline: none;
 }
@@ -71,4 +70,10 @@ input{
 ::placeholder {
   font-size: 11px;
   color: gray;
+}
+
+.post-comments{
+  font-size: 10px;
+  color: black;
+  font-weight: bold;
 }
