@@ -1,4 +1,7 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+*{
+  font-family: 'Open Sans', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -25,30 +28,32 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  width: 200px;
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
-  
-
+  width: 50%;
   text-align: left;
-
   margin: 10px 0;
 }
 
 .post-img {
   width: 100%;
+  height: 500px;
+
 }
 
 .post-description {
   font-size: 10px;
   color: black;
+  padding-top:5px;
 }
 
 .post-likes {
   font-size: 10px;
   color: black;
   font-weight: bold;
+  border-bottom: 1px solid gray;
+  padding: 5px 0;
 }
 
 .post-buttons {
@@ -65,6 +70,8 @@ input{
   border-bottom: 1px solid gray;
   padding: 0 5px;
   outline: none;
+  width: 643px;
+  height: 30px;
 }
 
 ::placeholder {
@@ -76,10 +83,18 @@ input{
   font-size: 10px;
   color: black;
   font-weight: bold;
+ /* display: none; */
 }
 
 button{
   margin-right: 5px;
   font-size: 12px;
   padding: 3px 5px;
+}
+
+.user-comment{
+  font-size: 13px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
 }
