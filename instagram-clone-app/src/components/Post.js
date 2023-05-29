@@ -24,8 +24,8 @@ const Post = (props) => {
     console.log(arr.id)
   }
 
-    // useEffect(()=>{console.log(props.post)},[])
-    console.log(props.post)
+    useEffect(()=>{console.log(props.post)},[])
+    // console.log(props.post)
   
 
   return (
@@ -43,7 +43,11 @@ const Post = (props) => {
         </button>
         <button
           onClick={
-            addItemToArray
+            () => {
+              if (inputVal !== "") {
+                addItemToArray()
+            }
+          }
         }
         >
           Comment
