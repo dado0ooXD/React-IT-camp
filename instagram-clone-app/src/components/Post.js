@@ -17,8 +17,9 @@ const Post = (props) => {
   };
 
   const addItemToArray = () => {
-    setArr({ comm: inputVal, id: Math.floor(Math.random() * 1000) });
-    props.post.comments.push(arr);
+    const newArrItem = { comm: inputVal, id: Math.floor(Math.random() * 1000) }
+    setArr(newArrItem);
+    props.post.comments.push(newArrItem);
     console.log(props.post.comments);
     setInputVal("");
     console.log(arr.id);

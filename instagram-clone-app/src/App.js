@@ -33,6 +33,7 @@ function App() {
             <Post
               key={post.id}
               post={post}
+              setData={setData}
               myUserName={myUsername}
               likeHandler={likeHandler}
               userName={myUsername}
