@@ -9,7 +9,6 @@ function App() {
       <Routes>
         <Route path='/' element={ <AllQuotes/>} />
         <Route path='/quote/:id' element={<QuoteDetails/>} />
-
     </Routes>
     </BrowserRouter>
   );
