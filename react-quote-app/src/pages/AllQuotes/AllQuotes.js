@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./AllQuotes.css";
 import QuoteCard from "../../components/QuoteCard";
+import {Link} from 'react-router-dom'
 
 const AllQuotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -16,14 +17,19 @@ const AllQuotes = () => {
   console.log(quotes);
 
   return (
-    <div>
+      <div>
       {quotes.map((item) => {
-          return <QuoteCard
+        return <div>
+            <QuoteCard
             key={Math.floor(Math.random() * 1000)}
           author={item.quoteAuthor}
           source={item.quoteSource}
           quote={item.quoteText}
         />
+        <Link to={"/quote/" + item._id }>
+      <button key={Math.floor(Math.random() * 1000)}>Click</button>
+      </Link>
+          </div>
       })}
     </div>
   );
