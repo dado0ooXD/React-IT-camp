@@ -26,8 +26,8 @@ const AllQuotes = () => {
           source={item.quoteSource}
           quote={item.quoteText}
         />
-        <Link to={"/quote/" + item._id }>
-      <button key={Math.floor(Math.random() * 1000)}>Click</button>
+        <Link  to={"/quote/" + item._id }>
+      <button>Click</button>
       </Link>
           </div>
       })}
