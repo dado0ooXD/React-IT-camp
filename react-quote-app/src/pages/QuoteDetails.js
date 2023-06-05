@@ -18,7 +18,7 @@ const QuoteDetails = (props) => {
         setQuotes(data);
       })
       .catch((error) => {
-        console.log("Error", error);
+        console.log("Error", error);  
       });
   }, []);
     
