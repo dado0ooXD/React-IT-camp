@@ -12,6 +12,7 @@ const QuoteCard = (props) => {
                 <h1>Quote: ---{props.quote}</h1>
                 <h2>Author: ---{props.author}</h2>
                 <p>Source: ---{props.source}</p>
+                <h6>likes: { props.likes}</h6>
             </div>
         </>
 
