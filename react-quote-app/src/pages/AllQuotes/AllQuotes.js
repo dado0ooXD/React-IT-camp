@@ -29,14 +29,15 @@ const AllQuotes = () => {
             quote={item.quoteText}
             likes = {item.likes}
           />
-          <button onClick={() => {  navigate("/quote/" + item._id + "") }}>Go to details</button>
-          <button
-                  onClick={() => {
-                    navigate("/editquote/" + item._id + "")
-                  }}
-                >
-                  Edit quote
-                </button>
+          
+          
+          <Link to={"/editquote/" + item._id + ""}>
+            <button
+            // onClick={() => {
+            //   navigate("/editquote/" + item._id + "")
+            // }}
+            >Edit quote</button>
+          </Link>
         <Link  to={"/quote/" + item._id }>
       <button>Click</button>
           </Link>
