@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./AllQuotes.css";
 import QuoteCard from "../../components/QuoteCard";
-import {Link, useParams, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const AllQuotes = () => {
-  const navigate = useNavigate();
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
@@ -31,7 +30,7 @@ const AllQuotes = () => {
           />
           
           
-          <Link to={"/editquote/" + item._id + ""}>
+          <Link to={"/editquote/" + item._id}>
             <button
             // onClick={() => {
             //   navigate("/editquote/" + item._id + "")
