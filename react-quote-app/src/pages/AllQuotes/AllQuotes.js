@@ -17,15 +17,6 @@ const AllQuotes = () => {
 
   console.log(quotes);
 
-  const likeHandler = () => {
-    fetch("https://js-course-server.onrender.com/quotes/like/" + params.id, {
-      method: "PATCH"
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setQuotes(data);
-      });
-  }
 
   return (
       <div>
@@ -41,9 +32,6 @@ const AllQuotes = () => {
         <Link  to={"/quote/" + item._id }>
       <button>Click</button>
           </Link>
-          <button onClick={likeHandler}>
-            Like
-          </button>
           </div>
       })}
     </div>

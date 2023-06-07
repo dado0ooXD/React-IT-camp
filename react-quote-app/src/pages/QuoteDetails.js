@@ -10,21 +10,42 @@ const QuoteDetails = (props) => {
   const [quotes, setQuotes] = useState({});
   const key = Math.floor(Math.random() * 1000)
 
-  useEffect(() => {
+  const getQuotes = () => {
     fetch("https://js-course-server.onrender.com/quotes/get-quote/" + params.id)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data.likes)
-        setQuotes(data);
-        
-      })
-      .catch((error) => {
-        console.log("Error", error);  
-      });
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data.likes)
+      setQuotes(data);
+      
+    })
+    .catch((error) => {
+      console.log("Error", error);  
+    });
+}
+ 
+
+  useEffect(() => {
+    getQuotes();
   }, []);
     
+  const likeHandler = () => {
+    fetch(
+      "https://js-course-server.onrender.com/quotes/like/" +
+        params.id +
+        "",
+      {
+        method: "PATCH",
+      }
+    )
+      .then(res => {
+        getQuotes();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className='quote-details'>
@@ -38,12 +59,9 @@ const QuoteDetails = (props) => {
       <Link to={"/"}>
       <button>Back on all quotes</button>
       </Link>
-      <Link to={'/quote/:id/secondpage'}>
-      <button>Second page</button>
-      </Link>
-      <Link to={`/quote/${params.id}/editquote`}>
-      <button>Edit this quote</button>
-      </Link>
+      <button onClick={likeHandler}
+      >Like</button>
+      
     </div>
   )
 }
