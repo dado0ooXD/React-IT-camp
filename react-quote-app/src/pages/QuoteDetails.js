@@ -33,8 +33,7 @@ const QuoteDetails = (props) => {
   const likeHandler = () => {
     fetch(
       "https://js-course-server.onrender.com/quotes/like/" +
-        params.id +
-        "",
+        params.id ,
       {
         method: "PATCH",
       }
