@@ -4,6 +4,7 @@ import AllQuotes from './pages/AllQuotes/AllQuotes';
 import QuoteDetails from './pages/QuoteDetails';
 import Edit from './pages/Edit';
 import Login from './pages/Login/Login';
+import SignUp from './pages/Registration/SignUp';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path='/' element={ <AllQuotes/>} />
         <Route path='/quote/:id' element={<QuoteDetails />} />
         <Route path='/editquote/:id' element={<Edit />} />
-        <Route path='/login' element={ <Login/>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp/>}/>
     </Routes>
     </BrowserRouter>
   );

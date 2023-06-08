@@ -1,24 +1,24 @@
-import React from "react";
-import "./Login.css";
-import { Formik } from "formik";
-import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
-const loginSchema = yup.object({
-  email: yup.string().required("Nedostaje email").email("Neispravan email"),
-  // .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
-  password: yup.string().required("Unesite password").min(6).max(50),
-});
 
-const Login = () => {
-  const navigate = useNavigate();
 
+const SignUp = () => {
+
+    const loginSchema = yup.object({
+    email: yup.string().required("Nedostaje email").email("Neispravan email"),
+    // .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
+    password: yup.string().required("Unesite password").min(6).max(50),
+    });
+    
+    const navigate = useNavigate();
   return (
-    <div className="login-wrapper">
-      <Formik
-        initialValues={{ email: "", password: "" }}
+    <Formik
+        initialValues={{ email: "", password: "",confirmPassword: "" , username: "" }}
         onSubmit={(values, actions) => {
-          fetch("https://js-course-server.onrender.com/user/login", {
+          fetch("https://js-course-server.onrender.com/user/signup", {
             method: "POST",
             body: JSON.stringify(values),
             headers: {
@@ -28,8 +28,7 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
-                alert(data.userId)
-                navigate("/");
+                alert(data.success)
               }             
             });
         }}
@@ -70,7 +69,8 @@ const Login = () => {
                 name="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.email}
+                          value={values.email}
+                          placeholder='Email'
               />
               <p className="error-message">
                 {errors.email && touched.email && errors.email}
@@ -82,20 +82,40 @@ const Login = () => {
                 name="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.password}
+                          value={values.password}
+                          placeholder='Password'
               />
               <p className="error-message">
                 {errors.password && touched.password && errors.password}
               </p>
-            </div>
+                  </div>
+                  <div>
+                  <input
+                type="password"
+                name="confirmPassword"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                          value={values.confirmPassword}
+                          placeholder='Confirm password'
+              />
+                  </div>
+                  <div>
+                  <input
+                type="text"
+                name="username"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                          value={values.username}
+                          placeholder='Username'
+              />
+                  </div>
             <button onClick={handleSubmit} type="button">
               Submit
             </button>
           </div>
         )}
       </Formik>
-    </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default SignUp
