@@ -28,7 +28,7 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
-                alert(data.userId)
+                alert(data.success)
                 navigate("/");
               }             
             });

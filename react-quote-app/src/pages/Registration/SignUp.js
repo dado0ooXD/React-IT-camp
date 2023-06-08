@@ -10,13 +10,14 @@ const SignUp = () => {
     const loginSchema = yup.object({
     email: yup.string().required("Nedostaje email").email("Neispravan email"),
     // .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
-    password: yup.string().required("Unesite password").min(6).max(50),
+        password: yup.string().required("Unesite password").min(6).max(50),
+     confirmPassword: yup.string().required("Password se ne poklapa").min(6).max(50)
     });
     
     const navigate = useNavigate();
   return (
     <Formik
-        initialValues={{ email: "", password: "",confirmPassword: "" , username: "" }}
+        initialValues={{ email: "", password: "", confirmPassword: "" , username: "" }}
         onSubmit={(values, actions) => {
           fetch("https://js-course-server.onrender.com/user/signup", {
             method: "POST",
@@ -27,9 +28,11 @@ const SignUp = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              if (data.token) {
-                alert(data.success)
-              }             
+              if (data.userId) {
+                  alert("Registracija uspesna");
+                  navigate('/login')
+                }         
+              console.log(data)  
             });
         }}
         validationSchema={loginSchema}
