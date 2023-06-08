@@ -17,7 +17,7 @@ const SignUp = () => {
     const navigate = useNavigate();
   return (
     <Formik
-        initialValues={{ email: "", password: "", confirmPassword: "" , username: "" }}
+        initialValues={{ email: "", password: "", confirmPassword: "" , fullName: "" }}
         onSubmit={(values, actions) => {
           fetch("https://js-course-server.onrender.com/user/signup", {
             method: "POST",
@@ -105,7 +105,7 @@ const SignUp = () => {
                   <div>
                   <input
                 type="text"
-                name="username"
+                name="fullName"
                 onChange={handleChange}
                 onBlur={handleBlur}
                           value={values.username}
