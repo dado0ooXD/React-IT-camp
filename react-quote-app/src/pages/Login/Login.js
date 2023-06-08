@@ -5,9 +5,9 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
 const loginSchema = yup.object({
-  email: yup.string().required("Nedostaje email").email("Email nije dobar"),
+  email: yup.string().required("Nedostaje email").email("Neispravan email"),
   // .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
-  password: yup.string().required().min(6).max(50),
+  password: yup.string().required("Unesite password").min(6).max(50),
 });
 
 const Login = () => {
@@ -28,8 +28,9 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
+                alert(data.success)
                 navigate("/");
-              }
+              }             
             });
         }}
         validationSchema={loginSchema}
