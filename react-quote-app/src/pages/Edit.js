@@ -23,7 +23,7 @@ const Edit = () => {
       body: JSON.stringify(newQuote),
       headers: {
         "Content-Type": "application/json",
-        authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpZCI6IjY0ODBiYzhhZGE5NDRhMDAzMjAwNTJlMyIsImZ1bGxOYW1lIjoiVGVzdCBUZXN0IiwiaXNBZG1pbiI6ZmFsc2UsImlzR3Vlc3QiOmZhbHNlLCJpYXQiOjE2ODYxNTkzNTQsImV4cCI6MTcxNzY5NTM1NH0.vpQPh-57IhCkTJVPDsGI04IjWEWiD8XST6-I1Fm0W5M"
+        authorization: `${process.env.REACT_APP_TOKEN_KEY}`
       },
     })
       .then((response) => response.json())
@@ -35,7 +35,7 @@ const Edit = () => {
         alert("error");
       });
   };
-
+console.log(process.env)
   return (
     <div className="main">
       <input
