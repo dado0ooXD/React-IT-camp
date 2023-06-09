@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { ref } from 'yup';
+import './SignUp.css';
 
 const loginSchema = yup.object({
   email: yup.string().required("Nedostaje email").email("Neispravan email"),
@@ -10,7 +11,7 @@ const loginSchema = yup.object({
   password: yup
     .string()
     .required("Unesite password")
-    .min(9, "Password mora imati najmanje 8 karaktera.")
+    .min(9, "Password mora imati najmanje 9 karaktera.")
     .max(50),
     confirmPassword: yup.string().required("Potvrdite password")
     .oneOf([ref("password")], "Passwords does not match"),
@@ -19,7 +20,9 @@ const loginSchema = yup.object({
 const SignUp = () => {
   const navigate = useNavigate();
   return (
-    <Formik
+    <div className="main">
+      
+      <Formik
       initialValues={{
         email: "",
         password: "",
@@ -56,7 +59,7 @@ const SignUp = () => {
       //     errors.email = "Neispravan email";
       //   }
       //   return errors;
-      // }}
+      // }
     >
       {({
         values, // formikov state
@@ -66,7 +69,7 @@ const SignUp = () => {
         handleBlur,
         handleSubmit,
       }) => (
-        <div>
+        <div className="forma">
           <button
             onClick={() => {
               console.log(values, "values");
@@ -133,6 +136,8 @@ const SignUp = () => {
         </div>
       )}
     </Formik>
+
+</div>
   );
 };
 
