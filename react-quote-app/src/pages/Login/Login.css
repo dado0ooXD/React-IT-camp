@@ -56,8 +56,10 @@
     text-decoration: none;
     overflow: hidden;
     z-index: 1;
+    letter-spacing: 1px;
     font-family: inherit;
-    margin-top: 15px;
+    margin-top: 7px;
+    font-family: monospace;
    }
    
    .submit-btn::before {
@@ -82,4 +84,16 @@
    .formica {
     border: 2px solid #fa4753;
     padding: 30px;
+    padding-bottom: 10px;
+}
+
+.no-account{
+  color: #3f3f3f;
+  font-family: monospace;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.no-account:hover{
+  color: white;
 }

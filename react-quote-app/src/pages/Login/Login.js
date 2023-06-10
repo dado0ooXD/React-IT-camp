@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import { Link } from "react-router-dom";
 
 const loginSchema = yup.object({
   email: yup.string().required("Required field").email("Neispravan email"),
@@ -61,7 +62,7 @@ const Login = () => {
           handleSubmit,
         }) =>
           isLoading ? (
-            <div className="spinner-border text-primary" role="status">
+            <div className="spinner-border text-danger" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
           ) : (
@@ -96,11 +97,18 @@ const Login = () => {
               </div>
                 <div >
                   <button className="submit-btn" onClick={() => {
-                    setIsLoading(true)
-                    handleSubmit()
+                    setIsLoading(true);
+                    // setTimeout(() => { setIsLoading(false)}, 2000);
+                    handleSubmit();
+                    
+                    
               }} type="button">
                 Submit
-                </button>
+                  </button>
+                  <p className="no-account" onClick={() => {
+                    setIsLoading(true);
+                    setTimeout(() => {navigate("/signup");}, 2000)
+                  }}>Sign Up?</p>
                   {/* <button
                     className="submit-btn"
                 onClick={() => {
