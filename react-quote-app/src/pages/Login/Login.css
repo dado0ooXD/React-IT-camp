@@ -4,11 +4,82 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+    background-color: #212121;
     text-align: center;
   }
   
   .error-message {
     font-size: 10px;
-    color: red;
+    color: #fa4753;
   }
+
+  .inputs {
+    max-width: 200px;
+    height: 30px;
+    border: 2px solid transparent;
+    outline: none;
+    border-bottom: 2px solid #3f3f3f;
+    caret-color: #3f3f3f;
+    background-color: #212121;
+    padding: 5px;
+    transition: .5s linear;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  
+  .inputs:focus {
+    border: 2px solid #fa4753;
+    caret-color: #fa4753;
+    color: #fa4753;
+    box-shadow: 4px 4px 10px #070707;
+  }
+  
+  .inputs:focus::placeholder {
+    color: #fa4753;
+    
+  }
+
+  /* BUTTON */
+
+
+  .submit-btn {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 14px;
+    width: 200px;
+    font-weight: 700;
+    color: white;
+    border: 2px solid #fa4753;
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    font-family: inherit;
+    margin-top: 15px;
+   }
+   
+   .submit-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fa4753;
+    transform: translateX(-100%);
+    transition: all .3s;
+    z-index: -1;
+   }
+   
+   .submit-btn:hover::before {
+    transform: translateX(0);
+   }
+
+   /* FORM */
+
+   .formica {
+    border: 2px solid #fa4753;
+    padding: 30px;
+}

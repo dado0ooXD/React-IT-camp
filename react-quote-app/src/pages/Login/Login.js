@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
 const loginSchema = yup.object({
-  email: yup.string().required("Nedostaje email").email("Neispravan email"),
+  email: yup.string().required("Required field").email("Neispravan email"),
   // .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
-  password: yup.string().required("Unesite password").min(6).max(50),
+  password: yup.string().required("Required field").min(6).max(50),
 });
 
 const Login = () => {
@@ -65,20 +65,13 @@ const Login = () => {
               <span className="visually-hidden">Loading...</span>
             </div>
           ) : (
-            <div>
-              <button
-                onClick={() => {
-                  console.log(values, "values");
-                  console.log(errors, "errors");
-                  console.log(touched, "touched");
-                }}
-              >
-                Console log states
-              </button>
+            <div className="formica">
               <div>
                 <input
                   type="email"
-                  name="email"
+                    name="email"
+                    className="inputs"
+                    placeholder="Enter your email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -90,7 +83,9 @@ const Login = () => {
               <div>
                 <input
                   type="password"
-                  name="password"
+                    name="password"
+                    className="inputs"
+                    placeholder="Enter your password"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
@@ -99,12 +94,24 @@ const Login = () => {
                   {errors.password && touched.password && errors.password}
                 </p>
               </div>
-                <button onClick={() => {
-                  setIsLoading(true);
-                  handleSubmit()
+                <div >
+                  <button className="submit-btn" onClick={() => {
+                    setIsLoading(true)
+                    handleSubmit()
               }} type="button">
                 Submit
-              </button>
+                </button>
+                  {/* <button
+                    className="submit-btn"
+                onClick={() => {
+                  console.log(values, "values");
+                  console.log(errors, "errors");
+                  console.log(touched, "touched");
+                }}
+              >
+                Console log states
+              </button> */}
+                </div>
             </div>
           )
         }
