@@ -28,8 +28,9 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
+                localStorage.setItem("auth_token", data.token);
                 alert(data.success)
-                navigate("/");
+                navigate("/addnewquote");
               }             
             });
         }}
