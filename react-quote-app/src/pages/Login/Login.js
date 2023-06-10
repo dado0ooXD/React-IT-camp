@@ -12,12 +12,13 @@ const loginSchema = yup.object({
 });
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   return (
     <div className="login-wrapper">
       <Formik
-        initialValues={{ email: "", password: "", isLoading: false }}
+        initialValues={{ email: "", password: ""}}
         onSubmit={(values, actions) => {
           fetch("https://js-course-server.onrender.com/user/login", {
             method: "POST",
@@ -32,9 +33,13 @@ const Login = () => {
                 localStorage.setItem("auth_token", data.token);
                 navigate("/addnewquote");
               }
+              else {
+                setIsLoading(false)
+              }
             });
         }}
         validationSchema={loginSchema}
+        
         // validate={(values) => {
         //   const errors = {};
         //   if (
@@ -55,7 +60,7 @@ const Login = () => {
           handleBlur,
           handleSubmit,
         }) =>
-          values.isLoading ? (
+          isLoading ? (
             <div className="spinner-border text-primary" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
@@ -95,7 +100,7 @@ const Login = () => {
                 </p>
               </div>
                 <button onClick={() => {
-                  values.isLoading = true;
+                  setIsLoading(true);
                   handleSubmit()
               }} type="button">
                 Submit
