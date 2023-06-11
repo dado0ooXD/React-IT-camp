@@ -49,7 +49,7 @@
     width: 200px;
     font-weight: 700;
     color: white;
-    border: 2px solid #fa4753;
+    border: 2px solid #3f3f3f;
     cursor: pointer;
     position: relative;
     background-color: transparent;
@@ -69,7 +69,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #fa4753;
+    background-color: #3f3f3f;
     transform: translateX(-100%);
     transition: all .3s;
     z-index: -1;
@@ -82,7 +82,7 @@
    /* FORM */
 
    .formica {
-    border: 2px solid #fa4753;
+    border: 2px solid #3f3f3f;
     padding: 30px;
     padding-bottom: 10px;
 }

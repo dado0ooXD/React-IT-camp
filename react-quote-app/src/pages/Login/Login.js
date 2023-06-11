@@ -98,7 +98,7 @@ const Login = () => {
                 <div >
                   <button className="submit-btn" onClick={() => {
                     setIsLoading(true);
-                    // setTimeout(() => { setIsLoading(false)}, 2000);
+                    setTimeout(() => { setIsLoading(false)}, 2000);
                     handleSubmit();
                     
                     

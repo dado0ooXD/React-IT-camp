@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { ref } from 'yup';
 import './SignUp.css';
 
+
 const loginSchema = yup.object({
   email: yup.string().required("Nedostaje email").email("Neispravan email"),
   // .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
@@ -70,7 +71,7 @@ const SignUp = () => {
         handleSubmit,
       }) => (
         <div className="forma">
-          <button
+          {/* <button
             onClick={() => {
               console.log(values, "values");
               console.log(errors, "errors");
@@ -78,9 +79,10 @@ const SignUp = () => {
             }}
           >
             Console log states
-          </button>
+          </button> */}
           <div>
             <input
+            className="inp"
               type="email"
               name="email"
               onChange={handleChange}
@@ -93,7 +95,8 @@ const SignUp = () => {
             </p>
           </div>
           <div>
-            <input
+              <input
+                className="inp"
               type="password"
               name="password"
               onChange={handleChange}
@@ -106,7 +109,8 @@ const SignUp = () => {
             </p>
           </div>
           <div>
-            <input
+              <input
+                className="inp"
               type="password"
               name="confirmPassword"
               onChange={handleChange}
@@ -121,7 +125,8 @@ const SignUp = () => {
             </p>
           </div>
           <div>
-            <input
+              <input
+                className="inp"
               type="text"
               name="fullName"
               onChange={handleChange}
@@ -130,9 +135,10 @@ const SignUp = () => {
               placeholder="Username"
             />
           </div>
-          <button onClick={handleSubmit} type="button">
+          {/* <button className="signup-btn" onClick={handleSubmit} type="button">
             Submit
-          </button>
+            </button> */}
+            <button class="signup-btn"><span>Download</span></button>
         </div>
       )}
     </Formik>
