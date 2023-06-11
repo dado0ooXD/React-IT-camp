@@ -33,9 +33,9 @@ const Login = () => {
                 localStorage.setItem("auth_token", data.token);
                 navigate("/addnewquote");
               }
-              else {
-                setIsLoading(false)
-              }
+              // else {
+              //   setIsLoading(false)
+              // }
             });
         }}
         validationSchema={loginSchema}
@@ -97,16 +97,14 @@ const Login = () => {
                 <div >
                   <button className="submit-btn" onClick={() => {
                     setIsLoading(true);
-                    setTimeout(() => { setIsLoading(false)}, 2000);
-                    handleSubmit();
-                    
-                    
+                    setTimeout(() => { handleSubmit();}, 2000); 
               }} type="button">
                 Submit
                   </button>
                   <p className="no-account" onClick={() => {
                     setIsLoading(true);
-                    setTimeout(() => {navigate("/signup");}, 2000)
+                    // setTimeout(() => {navigate("/signup");}, 2000);
+                    navigate("/signup")
                   }}>Sign Up?</p>
                   {/* <button
                     className="submit-btn"

@@ -145,10 +145,10 @@ const SignUp = () => {
           {/* <button className="signup-btn" onClick={handleSubmit} type="button">
             Submit
             </button> */}
-            <button class="signup-btn">Sign Up</button>
+            <button className="signup-btn">Sign Up</button>
             <p className="have-acc" onClick={() => {
                   setIsLoading(true);
-                  setInterval(() => { navigate("/login"); setIsLoading(false) }, 2000);
+navigate("/login")
                   
             }}>You already have an account?</p>
         </div>
