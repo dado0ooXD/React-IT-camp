@@ -96,15 +96,16 @@ const Login = () => {
               </div>
                 <div >
                   <button className="submit-btn" onClick={() => {
-                    setIsLoading(true);
-                    setTimeout(() => { handleSubmit();}, 2000); 
+                    setIsLoading(true)
+                    handleSubmit()
+                    // setTimeout(() => {handleSubmit()}, 1000)
               }} type="button">
                 Submit
                   </button>
                   <p className="no-account" onClick={() => {
                     setIsLoading(true);
-                    // setTimeout(() => {navigate("/signup");}, 2000);
-                    navigate("/signup")
+                    setTimeout(() => {navigate("/signup");}, 1000);
+                    // navigate("/signup")
                   }}>Sign Up?</p>
                   {/* <button
                     className="submit-btn"

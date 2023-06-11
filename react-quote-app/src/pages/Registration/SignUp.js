@@ -42,8 +42,8 @@ const SignUp = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.userId) {
-              alert("Registracija uspesna");
-              navigate("/login");
+            alert("Registracija uspesna")
+              navigate("/addnewquote");
             } else {
               alert("Registracija neuspesna");
             }
@@ -145,10 +145,14 @@ const SignUp = () => {
           {/* <button className="signup-btn" onClick={handleSubmit} type="button">
             Submit
             </button> */}
-            <button className="signup-btn">Sign Up</button>
+                <button className="signup-btn" type="button" onClick={() => {
+                  setIsLoading(true);
+                  // setTimeout(() => {handleSubmit()}, 1000);
+                  handleSubmit()
+            }}>Sign Up</button>
             <p className="have-acc" onClick={() => {
                   setIsLoading(true);
-navigate("/login")
+                setTimeout(() => {navigate("/login")}, 1000)
                   
             }}>You already have an account?</p>
         </div>
