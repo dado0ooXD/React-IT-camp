@@ -1,14 +1,18 @@
 .main {
     height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .forma {
-    border: 1px solid #3b82f6;
+    border: 1px solid #dadada;
+    border-radius: 5px;
     padding: 30px;
     padding-right: 13px;
+    padding-bottom: 15px;
+    width: auto
 }
 
 /* INPUT */
@@ -37,10 +41,11 @@
   font-size: 15px;
   padding: 7px 14px;
   border: none;
+  width: 210px;
   background-color: #3b82f6;
   color: white;
   font-family:monospace ;
-  margin-top: 20px;
+  margin-top: 25px;
    }
    
    /* .signup-btn span {
@@ -67,3 +72,16 @@
     opacity: 4;
     right: 0;
    } */
+
+   .have-acc{
+    font-family: monospace;
+    font-size: 13px;
+    color: #3b82f6;
+    margin-top: 10px;
+    margin-left: 5px;
+   }
+
+   .have-acc:hover{
+    color: #dadada;
+    cursor: pointer;
+   }

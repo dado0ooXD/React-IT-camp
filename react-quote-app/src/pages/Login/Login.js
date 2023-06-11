@@ -4,7 +4,6 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from "react-router-dom";
 
 const loginSchema = yup.object({
   email: yup.string().required("Required field").email("Neispravan email"),

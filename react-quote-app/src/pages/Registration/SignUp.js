@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { ref } from 'yup';
 import './SignUp.css';
-
+import 'bootstrap/dist/css/bootstrap.css';
 
 const loginSchema = yup.object({
   email: yup.string().required("Nedostaje email").email("Neispravan email"),
@@ -20,6 +20,7 @@ const loginSchema = yup.object({
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="main">
       
@@ -69,7 +70,13 @@ const SignUp = () => {
         handleChange,
         handleBlur,
         handleSubmit,
-      }) => (
+        }) =>
+          isLoading ? (
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+      )
+        :(
         <div className="forma">
           {/* <button
             onClick={() => {
@@ -139,6 +146,11 @@ const SignUp = () => {
             Submit
             </button> */}
             <button class="signup-btn">Sign Up</button>
+            <p className="have-acc" onClick={() => {
+                  setIsLoading(true);
+                  setInterval(() => { navigate("/login"); setIsLoading(false) }, 2000);
+                  
+            }}>You already have an account?</p>
         </div>
       )}
     </Formik>
