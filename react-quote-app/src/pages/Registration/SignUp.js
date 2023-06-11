@@ -80,7 +80,7 @@ const SignUp = () => {
           >
             Console log states
           </button> */}
-          <div>
+          <div style={{textAlign: "center"}}>
             <input
             className="inp"
               type="email"
@@ -94,7 +94,7 @@ const SignUp = () => {
               {errors.email && touched.email && errors.email}
             </p>
           </div>
-          <div>
+          <div style={{textAlign: "center"}}>
               <input
                 className="inp"
               type="password"
@@ -108,7 +108,7 @@ const SignUp = () => {
               {errors.password && touched.password && errors.password}
             </p>
           </div>
-          <div>
+          <div style={{textAlign: "center"}}>
               <input
                 className="inp"
               type="password"
@@ -124,7 +124,7 @@ const SignUp = () => {
                 errors.confirmPassword}
             </p>
           </div>
-          <div>
+          <div style={{textAlign: "center"}}>
               <input
                 className="inp"
               type="text"
@@ -138,7 +138,7 @@ const SignUp = () => {
           {/* <button className="signup-btn" onClick={handleSubmit} type="button">
             Submit
             </button> */}
-            <button class="signup-btn"><span>Download</span></button>
+            <button class="signup-btn">Sign Up</button>
         </div>
       )}
     </Formik>
