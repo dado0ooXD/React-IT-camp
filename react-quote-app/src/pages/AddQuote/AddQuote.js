@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import "./AddQuote.css";
 
@@ -10,6 +10,7 @@ const AddQuote = () => {
   const [text, setText] = useState("");
   const [source, setSource] = useState("");
   const [category, setCategory] = useState("hardkodirano");
+  // const [categories, setCategories] = useState([]);
 
   const addQuote = {
     quoteText: text,
@@ -17,6 +18,14 @@ const AddQuote = () => {
     quoteAuthor: author,
     category: category,
   };
+
+  // useEffect(() => {
+  //   fetch("https://js-course-server.onrender.com/category/get-all")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setCategories(data);
+  //     });
+  // }, []);
 
   const addNewQuote = () => {
     fetch("https://js-course-server.onrender.com/quotes/add-quote", {
