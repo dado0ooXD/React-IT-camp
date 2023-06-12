@@ -8,12 +8,13 @@ const AddQuote = () => {
     const [author, setAuthor] = useState("");
     const [text, setText] = useState("");
     const [source, setSource] = useState("");
-    // const { category, setCategory } = useState("");
+    const  [category, setCategory ] = useState("hardkodirano");
 
         const addQuote = {
             quoteText: text,
             quoteSource: source,
             quoteAuthor: author,
+            category: category,
     };
     
     const addNewQuote = () => {
