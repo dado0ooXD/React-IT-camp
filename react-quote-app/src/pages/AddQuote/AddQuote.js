@@ -1,5 +1,6 @@
 import React, {  useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import './AddQuote.css'
 
 const AddQuote = () => {
     const params = useParams();
@@ -43,16 +44,16 @@ const AddQuote = () => {
         <div className="main">
             <input
                 name='quoteText'
-                placeholder="text"
+                placeholder ="Quote Text"
                 value={text}
                 onChange={(e) => {
                     setText(e.target.value);
-                    console.log(text)
+                    console.log(text);
                 }}
             />
             <input
                 name='quoteAuthor'
-                placeholder="author"
+                placeholder="Quote Author"
                 value={author}
                 onChange={(e) => {
                     setAuthor(e.target.value);
@@ -60,7 +61,7 @@ const AddQuote = () => {
             />
             <input
                 name='quoteSource'
-                placeholder="source"
+                placeholder="Quote Source"
                 onChange={(e) => {
                     setSource(e.target.value);
                 }}
