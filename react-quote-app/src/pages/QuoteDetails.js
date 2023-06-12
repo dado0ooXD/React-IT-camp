@@ -67,7 +67,9 @@ const QuoteDetails = (props) => {
           navigate("/");
         })
       console.log(params)
-    }
+  }
+  
+  // ------------------------------------------------
 
   return (
     <div className='quote-details'>

@@ -34,6 +34,7 @@ const Edit = () => {
       .catch(() => {
         alert("error");
       });
+    console.log(params)
   };
 console.log(process.env)
   return (
