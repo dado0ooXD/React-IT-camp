@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import './QuoteDetails.css'
 import QuoteCard from '../components/QuoteCard';
 
 const QuoteDetails = (props) => {
 
-  const params = useParams();
+  const params = useParams();;
+  const navigate = useNavigate();
   console.log(params.id);
   const [quotes, setQuotes] = useState({});
   const key = Math.floor(Math.random() * 1000)
 
+
+  // GET QUOTE
   const getQuotes = () => {
     fetch("https://js-course-server.onrender.com/quotes/get-quote/" + params.id)
     .then((res) => {
@@ -29,6 +32,8 @@ const QuoteDetails = (props) => {
   useEffect(() => {
     getQuotes();
   }, []);
+
+  // LIKE QUOTE
     
   const likeHandler = () => {
     fetch(
@@ -46,6 +51,24 @@ const QuoteDetails = (props) => {
       });
   }
 
+  // DELETE QUOTE
+
+  const deleteQuote = () => {
+      fetch("https://js-course-server.onrender.com/quotes/delete/" + params.id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("auth_token")
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          navigate("/");
+        })
+      console.log(params)
+    }
+
   return (
     <div className='quote-details'>
       <QuoteCard
@@ -55,6 +78,7 @@ const QuoteDetails = (props) => {
         quote={quotes.quoteText}
         likes = {quotes.likes}
       />
+      <button onClick={deleteQuote}>Delete</button>
       <Link to={"/"}>
       <button>Back on all quotes</button>
       </Link>

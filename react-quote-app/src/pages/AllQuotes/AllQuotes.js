@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./AllQuotes.css";
 import QuoteCard from "../../components/QuoteCard";
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 
 const AllQuotes = () => {
   const [quotes, setQuotes] = useState([]);
+  const params = useParams();
 
   useEffect(() => {
     fetch("https://js-course-server.onrender.com/quotes/get-all-quotes")
@@ -17,19 +18,18 @@ const AllQuotes = () => {
   console.log(quotes);
 
 
+
   return (
       <div>
-      {quotes.map((item) => {
+      {quotes.map((item,index) => {
         return <div>
-            <QuoteCard
-            key={Math.floor(Math.random() * 1000)}
+          <QuoteCard
+            key={index}
           author={item.quoteAuthor}
           source={item.quoteSource}
             quote={item.quoteText}
             likes = {item.likes}
           />
-          
-          
           <Link to={"/editquote/" + item._id}>
             <button
             // onClick={() => {
@@ -38,7 +38,7 @@ const AllQuotes = () => {
             >Edit quote</button>
           </Link>
         <Link  to={"/quote/" + item._id }>
-      <button>Click</button>
+      <button>View this quote</button>
           </Link>
           </div>
       })}
