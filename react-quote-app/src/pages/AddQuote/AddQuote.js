@@ -5,9 +5,9 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 const addQuoteSchema = yup.object({
-  text: yup.string().required("This field is required"),
-  author: yup.string().required("This field is required"),
-  source: yup.string().required("This field is required"),
+  quoteText: yup.string().required("This field is required"),
+  quoteAuthor: yup.string().required("This field is required"),
+  quoteSource: yup.string().required("This field is required"),
   category: yup.string().required("Select category"),
 });
 
@@ -22,12 +22,14 @@ const AddQuote = () => {
     .then((res) => res.json())
     .then((data) => {
       setCategories(data);
+      console.log(data)
     });
 }, []);
 
   return (
-    <Formik
-      initialValues={{ text: "", author: "", source: "", category: "" }}
+    <div className="main">
+          <Formik
+      initialValues={{ quoteText: "", quoteAuthor: "", quoteSource: "", category: "" }}
       validationSchema={addQuoteSchema}
       onSubmit={(values, actions) => {
         fetch("https://js-course-server.onrender.com/quotes/add-quote", {
@@ -40,8 +42,9 @@ const AddQuote = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            alert("Citat je uspesno dodat");
-            navigate("/");
+            console.log(data)
+            alert("Citat uspesno dodat");
+            navigate("/")
           })
           .catch((error) => console.log(error));
         if (!dataToken) {
@@ -58,27 +61,42 @@ const AddQuote = () => {
         handleSubmit,
       }) => (
         <div className="main">
+         
           <input
-            name="text"
+            type="text"
+            name="quoteText"
             placeholder="Quote Text"
-            value={values.text}
+            value={values.quoteText}
             onBlur={handleBlur}
             onChange={handleChange}
           />
+          <p className="error-message">{ errors.quoteText &&
+                  touched.quoteText &&
+                  errors.quoteText}</p>
+          
           <input
-            name="author"
+            type="text"
+            name="quoteAuthor"
             placeholder="Quote Author"
-            value={values.author}
+            value={values.quoteAuthor}
             onBlur={handleBlur}
             onChange={handleChange}
           />
+          <p className="error-message">{ errors.quoteAuthor &&
+                  touched.quoteAuthor &&
+                  errors.quoteAuthor}</p>
           <input
-            name="source"
+            type="text"
+            name="quoteSource"
             placeholder="Quote Source"
-            value={values.source}
+            value={values.quoteSource}
             onBlur={handleBlur}
             onChange={handleChange}
           />
+          <p className="error-message">{ errors.quoteSource &&
+                  touched.quoteSource &&
+                  errors.quoteSource}</p>
+          
           <select
             name="category"
             onChange={handleChange}
@@ -92,13 +110,17 @@ const AddQuote = () => {
                 {item.name}
               </option>
             ))}
-          </select>
+            </select>
+            <p className="error-message">
+                {errors.category && touched.category && errors.category}
+              </p>
           <button className="addquote-btn" onClick={handleSubmit} type="button">
             Add Quote
           </button>
         </div>
       )}
     </Formik>
+</div>
   );
 };
 
