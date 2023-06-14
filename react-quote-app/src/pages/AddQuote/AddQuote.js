@@ -47,8 +47,11 @@ const AddQuote = () => {
             navigate("/")
           })
           .catch((error) => console.log(error));
+        
+        
         if (!dataToken) {
           return <Navigate to={"/login"} replace={true} />;
+          // navigate("/login")
         }
       }}
     >

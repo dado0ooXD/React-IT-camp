@@ -43,7 +43,7 @@ const SignUp = () => {
           .then((data) => {
             if (data.userId) {
             alert("Registracija uspesna")
-              navigate("/addnewquote");
+              navigate("/login");
             } else {
               alert("Registracija neuspesna");
             }

@@ -20,7 +20,10 @@ const AllQuotes = () => {
 
 
   return (
-      <div>
+    <div>
+      <button onClick={() => {
+        localStorage.removeItem('auth_token')
+      }}>Log Out</button>
       {quotes.map((item,index) => {
         return <div>
           <QuoteCard
