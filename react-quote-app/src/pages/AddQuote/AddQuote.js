@@ -28,7 +28,8 @@ const AddQuote = () => {
 
   return (
     <div className="main">
-          <Formik
+      <Formik
+        enableReinitialize = {true}
       initialValues={{ quoteText: "", quoteAuthor: "", quoteSource: "", category: "" }}
       validationSchema={addQuoteSchema}
       onSubmit={(values, actions) => {

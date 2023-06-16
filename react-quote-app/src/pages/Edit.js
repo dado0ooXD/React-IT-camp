@@ -67,7 +67,7 @@ const Edit = () => {
   return (
     <div className="main">
       <Formik
-        // enableReinitialize={true}
+        enableReinitialize={true}
         initialValues={quote}
         validationSchema={editSchema}
         onSubmit={(values, actions) => {
