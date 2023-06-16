@@ -9,7 +9,7 @@ const editSchema = yup.object({
   quoteAuthor: yup.string().required("This field is required"),
   quoteSource: yup.string().required("This field is required"),
   category: yup.string().required("This field is required"),
-})
+});
 
 const Edit = () => {
   const params = useParams();
@@ -19,17 +19,21 @@ const Edit = () => {
     quoteText: "",
     quoteAuthor: "",
     quoteSource: "",
-    category: ""
-  })
-  
+    category: "",
+  });
+
+  // UCITAVANJE KATEGORIJA
+
   useEffect(() => {
     fetch("https://js-course-server.onrender.com/category/get-all")
-    .then((res) => res.json())
-    .then((data) => {
-      setCategories(data);
-      console.log(data)
-    });
-  }, [])
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        console.log(data);
+      });
+  }, []);
+
+  // UZIMANJE CITATA
 
   useEffect(() => {
     fetch("https://js-course-server.onrender.com/quotes/get-quote/" + params.id)
@@ -38,29 +42,32 @@ const Edit = () => {
         setQuote(data);
       });
   }, []);
-    
+
+  // FUNKCIJA ZA EDITOVANJE
+
   const editQuote = (values) => {
     fetch("https://js-course-server.onrender.com/quotes/edit/" + params.id, {
-    method: "PATCH",
-    body: JSON.stringify(values),
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `${process.env.REACT_APP_TOKEN_KEY}`
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      alert("Citat je uspesno editovan!");
-      navigate("/");
+      method: "PATCH",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `${process.env.REACT_APP_TOKEN_KEY}`,
+      },
     })
-    .catch(() => {
-      alert("error");
-    });
-  }
- 
+      .then((response) => response.json())
+      .then((data) => {
+        alert("Citat je uspesno editovan!");
+        navigate("/");
+      })
+      .catch(() => {
+        alert("error");
+      });
+  };
+
   return (
     <div className="main">
       <Formik
+        // enableReinitialize={true}
         initialValues={quote}
         validationSchema={editSchema}
         onSubmit={(values, actions) => {
@@ -73,45 +80,41 @@ const Edit = () => {
           touched,
           handleChange,
           handleBlur,
-          handleSubmit
+          handleSubmit,
         }) => (
           <div className="main">
             <input
-            type="text"
-            name="quoteText"
-            placeholder="Quote Text"
-            value={values.quoteText}
-            onBlur={handleBlur}
-            onChange={handleChange}
+              type="text"
+              name="quoteText"
+              placeholder="Quote Text"
+              value={values.quoteText}
+              onBlur={handleBlur}
+              onChange={handleChange}
             />
             <p className="error-message">
-                  {errors.quoteText && touched.quoteText && errors.quoteText}
-                </p>
-           <input
-            type="text"
-            name="quoteAuthor"
-            placeholder="Quote Text"
-            value={values.quoteAuthor}
-            onBlur={handleBlur}
-            onChange={handleChange}
+              {errors.quoteText && touched.quoteText && errors.quoteText}
+            </p>
+            <input
+              type="text"
+              name="quoteAuthor"
+              placeholder="Quote Text"
+              value={values.quoteAuthor}
+              onBlur={handleBlur}
+              onChange={handleChange}
             />
-              <p className="error-message">
-                  {errors.quoteAuthor &&
-                    touched.quoteAuthor &&
-                    errors.quoteAuthor}
-                </p>
-             <input
-            type="text"
-            name="quoteSource"
-            placeholder="Quote Text"
-            value={values.quoteSource}
-            onBlur={handleBlur}
-            onChange={handleChange}
+            <p className="error-message">
+              {errors.quoteAuthor && touched.quoteAuthor && errors.quoteAuthor}
+            </p>
+            <input
+              type="text"
+              name="quoteSource"
+              placeholder="Quote Text"
+              value={values.quoteSource}
+              onBlur={handleBlur}
+              onChange={handleChange}
             />
-             <p className="error-message">
-                  {errors.quoteSource &&
-                    touched.quoteSource &&
-                    errors.quoteSource}
+            <p className="error-message">
+              {errors.quoteSource && touched.quoteSource && errors.quoteSource}
             </p>
             <div>
               <select
@@ -119,31 +122,30 @@ const Edit = () => {
                 onChange={handleChange}
                 value={values.category}
               >
-                <option disabled={true} value={""}>
+                <option value={""} selected={true} disabled={true}>
                   Select category
                 </option>
                 {categories.map((item, index) => (
-                  <option key={index} value={item._id}>{item.name }</option>
+                  <option key={index} value={item._id}>
+                    {item.name}
+                  </option>
                 ))}
               </select>
               <p className="error-message">
-                  {errors.category && touched.category && errors.category}
+                {errors.category && touched.category && errors.category}
               </p>
             </div>
             <button onClick={handleSubmit} type="button">
-                Submit
-              </button>
+              Submit
+            </button>
           </div>
         )}
-        
-   </Formik>
+      </Formik>
     </div>
-  )
-
+  );
 };
 
 export default Edit;
-
 
 // const [quote, SetQuote] = useState([]);
 // const [author, setAuthor] = useState("");
