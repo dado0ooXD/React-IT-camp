@@ -12,7 +12,8 @@
     padding: 30px;
     padding-right: 13px;
     padding-bottom: 15px;
-    width: auto
+    
+  
 }
 
 /* INPUT */
@@ -28,12 +29,17 @@
   transition: .3s;
   color: #3b82f6;
   height: 35px;
+  /* margin-right: 20px; */
 }
 
 .inp:focus{
     border: 1px solid #3b82f6;
     box-shadow: 0 0 0 4px #3b83f65f
 }
+/* 
+.input-div {
+    margin-right: 20px;
+} */
 
 /* BUTTON */
 
@@ -78,7 +84,7 @@
     font-size: 13px;
     color: #3b82f6;
     margin-top: 10px;
-    margin-left: 5px;
+    /* margin-left: 5px; */
    }
 
    .have-acc:hover{

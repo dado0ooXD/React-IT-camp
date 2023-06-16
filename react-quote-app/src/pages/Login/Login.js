@@ -3,6 +3,7 @@ import "./Login.css";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import * as ywt_decode from 'jwt-decode';
 import "bootstrap/dist/css/bootstrap.css";
 
 const loginSchema = yup.object({
@@ -39,23 +40,11 @@ const Login = () => {
             });
         }}
         validationSchema={loginSchema}
-        
-        // validate={(values) => {
-        //   const errors = {};
-        //   if (
-        //     !values.error ||
-        //     values.error.length < 10 ||
-        //     values.error.length > 100
-        //   ) {
-        //     errors.email = "Neispravan email";
-        //   }
-        //   return errors;
-        // }}
       >
         {({
-          values, // formikov state
-          errors, // errors = { email: 'Neispravan email' }
-          touched, // touched = { email: true }
+          values,
+          errors, 
+          touched, 
           handleChange,
           handleBlur,
           handleSubmit,
