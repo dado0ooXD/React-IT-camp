@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import "./AllQuotes.css";
 import QuoteCard from "../../components/QuoteCard";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { authSlice } from '../../store/authSlice';
 
 const AllQuotes = () => {
   const [quotes, setQuotes] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
+
+  const authState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch("https://js-course-server.onrender.com/quotes/get-all-quotes")
@@ -29,7 +34,7 @@ const AllQuotes = () => {
       </button>
       <button
         onClick={() => {
-          localStorage.removeItem("auth_token");
+          dispatch(authSlice.actions.logout());
         }}
       >
         Log Out

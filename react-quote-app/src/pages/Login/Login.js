@@ -5,6 +5,8 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import jwtDecode, * as ywt_decode from 'jwt-decode';
 import "bootstrap/dist/css/bootstrap.css";
+import { useDispatch } from 'react-redux';
+import { authSlice } from '../../store/authSlice';
 
 const loginSchema = yup.object({
   email: yup.string().required("Required field").email("Neispravan email"),
@@ -15,6 +17,7 @@ const loginSchema = yup.object({
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <div className="login-wrapper">
@@ -31,8 +34,9 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
-                const decode = jwtDecode(data.token);
-                console.log(decode);
+                const decoded = jwtDecode(data.token);
+                console.log(decoded);
+                dispatch(authSlice.actions.setData(decoded))
                 localStorage.setItem("auth_token", data.token);
                 navigate("/addnewquote");
               }
