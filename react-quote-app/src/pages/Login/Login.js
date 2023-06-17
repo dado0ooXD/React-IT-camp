@@ -3,7 +3,7 @@ import "./Login.css";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import * as ywt_decode from 'jwt-decode';
+import jwtDecode, * as ywt_decode from 'jwt-decode';
 import "bootstrap/dist/css/bootstrap.css";
 
 const loginSchema = yup.object({
@@ -31,6 +31,8 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
+                const decode = jwtDecode(data.token);
+                console.log(decode);
                 localStorage.setItem("auth_token", data.token);
                 navigate("/addnewquote");
               }

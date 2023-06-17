@@ -7,7 +7,10 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/Registration/SignUp';
 import AddQuote from './pages/AddQuote/AddQuote';
 
-function App() {
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
+const NavigationRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -19,6 +22,14 @@ function App() {
         <Route path='/signup' element={<SignUp/>}/>
     </Routes>
     </BrowserRouter>
+  );
+}
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <NavigationRoutes/>
+  </Provider>
   );
 }
 
