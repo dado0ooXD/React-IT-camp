@@ -14,9 +14,9 @@ export const authSlice = createSlice({
     setData(state, actions) {
       // console.log(state.id)
       const data = actions.payload;
-      console.log(data, "data");
+      // console.log(data, "data");
       state = data;
-      console.log(state);
+      // console.log(state);
       return state;
     },
     logout(state, actions) {

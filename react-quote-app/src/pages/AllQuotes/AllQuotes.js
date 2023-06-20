@@ -4,9 +4,11 @@ import "./AllQuotes.css";
 import QuoteCard from "../../components/QuoteCard";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { authSlice } from '../../store/authSlice';
+import { quoteSlice } from "../../store/quoteSlice";
 
 const AllQuotes = () => {
   const [quotes, setQuotes] = useState([]);
+  const [fav, setFav] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -18,11 +20,32 @@ const AllQuotes = () => {
       .then((res) => res.json())
       .then((data) => {
         setQuotes(data);
+        // console.log(data)
       });
-    // console.log(authState)
+    console.log(quoteSlice.getInitialState())
   }, []);
 
   // console.log(quotes);
+
+  // ADD TO FAVOURITES
+
+
+
+  const addToFavourites = (id) => {
+    fetch("https://js-course-server.onrender.com/quotes/get-quote/" + id )
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data.likes)
+      // setQuotes(data);
+      dispatch(quoteSlice.actions.setFavourites(data));
+      console.log(data)
+    })
+    .catch((error) => {
+      console.log("Error", error);  
+    });
+    // console.log(params)
+  }
+  
 
   return (
     <div>
@@ -59,6 +82,7 @@ const AllQuotes = () => {
             <Link to={"/quote/" + item._id}>
               <button>View this quote</button>
             </Link>
+            <button onClick={() => {addToFavourites(item._id)}}>Add to favourites</button>
           </div>
         );
       })}

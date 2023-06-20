@@ -3,13 +3,19 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import './QuoteDetails.css'
 import QuoteCard from '../components/QuoteCard';
 
+import { quoteSlice } from '../store/quoteSlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 const QuoteDetails = (props) => {
 
   const params = useParams();;
   const navigate = useNavigate();
-  console.log(params.id);
+  // console.log(params.id);
   const [quotes, setQuotes] = useState({});
-  const key = Math.floor(Math.random() * 1000)
+  const key = Math.floor(Math.random() * 1000);
+
+  // const quoteSlice = useSelector((state) => state.quote);
+  const dispatch = useDispatch();
 
 
   // GET QUOTE
@@ -19,9 +25,8 @@ const QuoteDetails = (props) => {
       return res.json();
     })
     .then((data) => {
-      console.log(data.likes)
+      // console.log(data.likes)
       setQuotes(data);
-      
     })
     .catch((error) => {
       console.log("Error", error);  
@@ -66,9 +71,11 @@ const QuoteDetails = (props) => {
           console.log(data);
           navigate("/");
         })
-      console.log(params)
+      // console.log(params)
   }
-  
+
+
+
   // ------------------------------------------------
 
   return (
@@ -87,8 +94,9 @@ const QuoteDetails = (props) => {
       <button onClick={likeHandler}
       >Like</button>
       
+      
     </div>
   )
 }
 
-export default QuoteDetails
+export default QuoteDetails;
