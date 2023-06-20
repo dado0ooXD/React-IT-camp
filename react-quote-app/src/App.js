@@ -7,10 +7,23 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/Registration/SignUp';
 import AddQuote from './pages/AddQuote/AddQuote';
 
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import { store } from './store/store';
+import { useEffect } from 'react';
+import jwtDecode from 'jwt-decode';
+import { authSlice } from './store/authSlice';
 
 const NavigationRoutes = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token");
+    if (token) {
+      const decoded = jwtDecode(token);
+      dispatch(authSlice.actions.setData(decoded))
+    }
+   }, []);
+
+
   return (
     <BrowserRouter>
       <Routes>

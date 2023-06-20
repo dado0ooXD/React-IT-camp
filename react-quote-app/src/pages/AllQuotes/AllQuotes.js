@@ -19,26 +19,24 @@ const AllQuotes = () => {
       .then((data) => {
         setQuotes(data);
       });
+    // console.log(authState)
   }, []);
 
-  console.log(quotes);
+  // console.log(quotes);
 
   return (
     <div>
-      <button
-        onClick={() => {
-          navigate("/login");
-        }}
-      >
-        Log In
-      </button>
-      <button
-        onClick={() => {
-          dispatch(authSlice.actions.logout());
-        }}
-      >
-        Log Out
-      </button>
+      {authState.id ? (
+        <button onClick={() => {
+          dispatch(authSlice.actions.logout())
+        }}>
+          Logout
+    </button>
+      ) : (
+          <button onClick={() => {navigate("/login")}}>
+            Login
+          </button>
+    )}
       {quotes.map((item, index) => {
         return (
           <div>

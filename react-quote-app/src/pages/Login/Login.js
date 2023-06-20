@@ -38,7 +38,7 @@ const Login = () => {
                 console.log(decoded);
                 dispatch(authSlice.actions.setData(decoded))
                 localStorage.setItem("auth_token", data.token);
-                navigate("/addnewquote");
+                navigate("/");
               }
               // else {
               //   setIsLoading(false)
