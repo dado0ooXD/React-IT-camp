@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     favourites: [],
+    report: [],
 }
 
 export const quoteSlice = createSlice({
@@ -10,11 +11,19 @@ export const quoteSlice = createSlice({
     reducers: {
         setFavourites(state, actions) {
             const quote = actions.payload;
-            state.favourites.push(quote);
+            const idArr = state.favourites.map((item, index) => item._id);
+            if (!idArr.includes(quote._id)) {
+                state.favourites.push(quote);
+            }
             return state;
         }, 
         clearFavourites(state, actions) {
             return initialState;
+        },
+        addReport(state, actions) {
+            const report = actions.payload;
+            state.report.push(report);
+            return state;
         }
     }
 })

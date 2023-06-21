@@ -4,5 +4,5 @@ import { quoteSlice } from "./quoteSlice";
 
 export const rootReducer = combineReducers({
   auth: authSlice.reducer,
-  quote: quoteSlice.reducer
+  quote: quoteSlice.reducer,
 });

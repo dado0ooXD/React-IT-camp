@@ -49,6 +49,7 @@ const AllQuotes = () => {
 console.log(quoteState)
   return (
     <div>
+      <h1>Favorite quotes: {quoteState.favourites.length}</h1>
       {authState.id ? (
         <button onClick={() => {
           dispatch(authSlice.actions.logout())
