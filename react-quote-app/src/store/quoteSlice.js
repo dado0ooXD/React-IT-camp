@@ -11,7 +11,6 @@ export const quoteSlice = createSlice({
         setFavourites(state, actions) {
             const quote = actions.payload;
             state.favourites.push(quote);
-            console.log(state.favourites[0])
             return state;
         }, 
         clearFavourites(state, actions) {
