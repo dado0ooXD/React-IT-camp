@@ -6,6 +6,7 @@ import Edit from './pages/Edit';
 import Login from './pages/Login/Login';
 import SignUp from './pages/Registration/SignUp';
 import AddQuote from './pages/AddQuote/AddQuote';
+import Reports from './components/Reports';
 
 import { Provider, useDispatch } from 'react-redux';
 import { store } from './store/store';
@@ -31,6 +32,7 @@ const NavigationRoutes = () => {
         <Route path='/addnewquote' element={<AddQuote/> } />
         <Route path='/quote/:id' element={<QuoteDetails />} />
         <Route path='/editquote/:id' element={<Edit />} />
+        <Route path='/reports' element={ <Reports/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp/>}/>
     </Routes>

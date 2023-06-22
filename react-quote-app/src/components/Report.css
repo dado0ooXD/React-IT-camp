@@ -1,0 +1,13 @@
+.main-report{
+    height: 100vh;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.report-card {
+    background-color: gray;
+    height: 300px;
+    width: 300px;
+}
