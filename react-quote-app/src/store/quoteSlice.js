@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     favourites: [],
-    report: [],
+    reports: [],
 }
 
 export const quoteSlice = createSlice({
@@ -22,7 +22,7 @@ export const quoteSlice = createSlice({
         },
         addReport(state, actions) {
             const report = actions.payload;
-            state.report.push(report);
+            state.reports.push(report);
             return state;
         }
     }

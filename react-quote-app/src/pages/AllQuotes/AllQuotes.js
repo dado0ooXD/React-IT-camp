@@ -26,27 +26,10 @@ const AllQuotes = () => {
     // console.log(quoteSlice)
   }, []);
 
-  // console.log(quotes);
 
 
-  // ADD TO FAVOURITES
-
-  // const addToFavourites = (id) => {
-  //   fetch("https://js-course-server.onrender.com/quotes/get-quote/" + id )
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     // console.log(data.likes)
-  //     // setQuotes(data);
-  //     dispatch(quoteSlice.actions.setFavourites(data));
-  //     // console.log(data)
-  //   })
-  //   .catch((error) => {
-  //     console.log("Error", error);  
-  //   });
-   
-  // }
   
-console.log(quoteState)
+
   return (
     <div>
       <h1>Favorite quotes: {quoteState.favourites.length}</h1>
@@ -70,7 +53,7 @@ console.log(quoteState)
               source={item.quoteSource}
               quote={item.quoteText}
               likes={item.likes}
-              prop = {item}
+              prop={item}
             />
             <Link to={"/editquote/" + item._id}>
               <button

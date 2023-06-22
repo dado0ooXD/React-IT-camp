@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import './QuoteCard.css';
 import { quoteSlice } from '../store/quoteSlice';
 
-
 const QuoteCard = (props) => {
     const dispatch = useDispatch();
     const quote = props.prop;
@@ -22,13 +21,13 @@ const QuoteCard = (props) => {
             reportMessage: reportMessage,
             user: {
               fullName: authState.fullName,
-              id: authState.id,
+              id: authState.id, 
             },
-          };
-          console.log(reportObject);
+        };
         dispatch(quoteSlice.actions.addReport(reportObject));
         console.log(quoteState.reports)
     }
+    
  
     return (
         <>

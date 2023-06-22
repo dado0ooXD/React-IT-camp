@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import jwtDecode, * as ywt_decode from 'jwt-decode';
 import "bootstrap/dist/css/bootstrap.css";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authSlice } from '../../store/authSlice';
 
 const loginSchema = yup.object({
@@ -18,6 +18,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
 
   return (
     <div className="login-wrapper">
@@ -35,9 +36,9 @@ const Login = () => {
             .then((data) => {
               if (data.token) {
                 const decoded = jwtDecode(data.token);
-                console.log(decoded);
                 dispatch(authSlice.actions.setData(decoded))
                 localStorage.setItem("auth_token", data.token);
+                console.log(decoded);
                 navigate("/");
               }
               // else {
