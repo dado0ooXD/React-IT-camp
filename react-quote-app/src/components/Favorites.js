@@ -1,20 +1,27 @@
 import React from 'react';
 import './Favorites.css';
+import { quoteSlice } from '../store/quoteSlice';
 
 import { useSelector, useDispatch } from 'react-redux';
 
 const Favorites = () => {
   const quoteState = useSelector((state) => state.quote);
   const favorites = quoteState.favourites;
+  const dispatch = useDispatch();
   console.log(favorites)
+
+  const removeQuote = () => {
+    dispatch(quoteSlice.actions.clearFavourites());
+  }
 
   return (
     <div className='main-favorite'>
       {favorites.map((item, index) => {
         return <div className='favorite-card'>
-          <h4>Quote Text: {item.quoteText }</h4>
-          <h4>Quote Author: { item.quoteAuthor}</h4>
-          <h4>Quote Source: { item.quoteSource}</h4>
+          <p>Quote Text: <span className='text'>{item.quoteText }</span></p>
+          <p>Quote Author: <span className='text'>{ item.quoteAuthor}</span></p>
+          <p>Quote Source: <span className='text'>{item.quoteSource}</span></p>
+          <button onClick={removeQuote}>Remove from favorite</button>
       </div>
       })}
     </div>

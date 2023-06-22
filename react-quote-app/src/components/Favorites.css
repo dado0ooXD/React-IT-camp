@@ -12,8 +12,15 @@
     width: 600px;
     background-color: lightgray;
     margin-top:20px;
+    border: 1px solid black;
+    padding-left: 20px;
 }
 
-.favorite-card h4{
+.favorite-card p{
     padding-top: 10px;
+}
+
+.text{
+    padding-left: 10px;
+    font-weight: bold;
 }
