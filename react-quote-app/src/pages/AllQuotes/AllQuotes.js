@@ -33,7 +33,9 @@ const AllQuotes = () => {
   return (
     <div>
       <h1>Favorite quotes: {quoteState.favourites.length}</h1>
-      <button onClick={() => {navigate("/favorites")}}>Go to favorites</button>
+      <h1>Reported quotes: {quoteState.reports.length }</h1>
+      <button onClick={() => { navigate("/favorites") }}>Go to favorites</button>
+      <button onClick={() => {navigate("/reports")}}>Go to reported quotes</button>
       {authState.id ? (
         <button onClick={() => {
           dispatch(authSlice.actions.logout())
