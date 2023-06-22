@@ -1,0 +1,19 @@
+.main-favorite{
+    height: 100vh;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.favorite-card{
+    width: 600px;
+    background-color: lightgray;
+    margin-top:20px;
+}
+
+.favorite-card h4{
+    padding-top: 10px;
+}

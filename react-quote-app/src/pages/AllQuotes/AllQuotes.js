@@ -27,12 +27,13 @@ const AllQuotes = () => {
   }, []);
 
 
+  console.log(quoteState.favourites);
 
-  
 
   return (
     <div>
       <h1>Favorite quotes: {quoteState.favourites.length}</h1>
+      <button onClick={() => {navigate("/favorites")}}>Go to favorites</button>
       {authState.id ? (
         <button onClick={() => {
           dispatch(authSlice.actions.logout())

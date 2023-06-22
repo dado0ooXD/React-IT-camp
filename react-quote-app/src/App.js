@@ -13,6 +13,7 @@ import { store } from './store/store';
 import { useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
 import { authSlice } from './store/authSlice';
+import Favorites from './components/Favorites';
 
 const NavigationRoutes = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,8 @@ const NavigationRoutes = () => {
         <Route path='/addnewquote' element={<AddQuote/> } />
         <Route path='/quote/:id' element={<QuoteDetails />} />
         <Route path='/editquote/:id' element={<Edit />} />
-        <Route path='/reports' element={ <Reports/>} />
+        <Route path='/reports' element={<Reports />} />
+        <Route path='/favorites' element={ <Favorites/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp/>}/>
     </Routes>
