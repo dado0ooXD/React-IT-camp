@@ -18,10 +18,12 @@ const NavRoutes = () => {
   );
 }
 
-const App = () => {
-  <Provider>
-    <NavRoutes store={ store} />
+function App () {
+  return (
+    <Provider store={store}>
+    <NavRoutes />
   </Provider>
+ )
 }
 
 export default App;
