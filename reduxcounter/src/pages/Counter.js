@@ -33,7 +33,12 @@ const Counter = () => {
 }
 
   const saveCount = () => {
-    dispatch(counterSlice.actions.saveValues(counterState.counter))
+    const savedData = {
+      count: counterState.counter,
+      fullName: authState.fullName,
+      id: authState.id
+    }
+    dispatch(counterSlice.actions.saveValues(savedData))
     console.log(counterState.savedValues)
   }
   
@@ -46,12 +51,21 @@ const Counter = () => {
           
           <div className='card'>
         <h1>{counterState.counter}</h1>
-        <h1>{counterState.savedValues}</h1>
+        <h1>{counterState.savedValues.count}</h1>
               <div>
               <button onClick={increase}>increase</button>
           <button onClick={reset}>reset</button>
           <button onClick={saveCount} disabled={!token}>Save count</button>
              </div>
+      </div>
+
+      <div className='sacuvani-countovi'>
+        {counterState.savedValues.map((item, index) =>
+        (<div key={index}>
+          <h1>{item.fullName}</h1>
+          <h3>{item.count}</h3>
+          <h6>{item.id }</h6>
+        </div>))}
       </div>
     </div>
   )
