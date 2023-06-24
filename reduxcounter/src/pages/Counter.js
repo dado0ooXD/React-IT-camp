@@ -41,11 +41,7 @@ const Counter = () => {
   return (
     <div className='main'>
       <div>
-        {token ? (
-           <button onClick={() => {localStorage.removeItem("auth_token")}}>Logout</button>
-        ) : (
-           <button onClick={() => {navigate("/login")}}>Login</button>
-        )}
+   <button onClick={() => {navigate("/login")}}>Login</button>
      </div>
           
           <div className='card'>

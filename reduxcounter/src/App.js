@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import Counter from './pages/Counter';
 import Login from './pages/Login/Login';
 import { useEffect } from 'react';
@@ -15,12 +15,14 @@ import {store} from './store/store'
 const NavRoutes = () => {
 
   const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
     if (token) {
       const decoded = jwtDecode(token);
       dispatch(authSlice.actions.setData(decoded))
     }
+    console.log(authState)
    }, []);
 
   return (
