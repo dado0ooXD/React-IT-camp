@@ -45,11 +45,12 @@ const Counter = () => {
 
   return (
     <div className='main'>
-      <div>
+    
+          
+      <div className='card'>
+        <div className='login'>
    <button onClick={() => {navigate("/login")}}>Login</button>
      </div>
-          
-          <div className='card'>
         <h1>{counterState.counter}</h1>
         <h1>{counterState.savedValues.count}</h1>
               <div>
@@ -62,9 +63,9 @@ const Counter = () => {
       <div className='sacuvani-countovi'>
         {counterState.savedValues.map((item, index) =>
         (<div key={index}>
-          <h1>{item.fullName}</h1>
-          <h3>{item.count}</h3>
-          <h6>{item.id }</h6>
+          <h1>Ime korisnika: {item.fullName}</h1>
+          <h3>Count: {item.count}</h3>
+          <h6>ID korisnika: {item.id }</h6>
         </div>))}
       </div>
     </div>
