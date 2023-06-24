@@ -27,7 +27,8 @@ const Counter = () => {
       <div className='main'>
           
           <div className='card'>
-              <h1>{counterState.counter}</h1>
+        <h1>{counterState.counter}</h1>
+        <h1>{counterState.savedValues}</h1>
               <div>
               <button onClick={increase}>increase</button>
           <button onClick={reset}>reset</button>
