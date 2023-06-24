@@ -18,6 +18,11 @@ const Counter = () => {
         dispatch(counterSlice.actions.reset());
 }
 
+  const saveCount = () => {
+    dispatch(counterSlice.actions.saveValues(counterState.counter))
+    console.log(counterState.savedValues)
+}
+
   return (
       <div className='main'>
           
@@ -25,7 +30,8 @@ const Counter = () => {
               <h1>{counterState.counter}</h1>
               <div>
               <button onClick={increase}>increase</button>
-              <button onClick={reset}>reset</button>
+          <button onClick={reset}>reset</button>
+          <button onClick={saveCount}>Save count</button>
              </div>
       </div>
     </div>

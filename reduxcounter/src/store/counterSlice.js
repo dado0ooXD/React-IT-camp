@@ -15,6 +15,11 @@ export const counterSlice = createSlice({
         },
         reset() {
             return initialState;
+        },
+        saveValues(state, actions) {
+            const val = actions.payload;
+       state.savedValues.push(val)
+            return state
         }
     
     }
