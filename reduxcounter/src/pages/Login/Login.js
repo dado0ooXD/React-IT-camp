@@ -3,6 +3,9 @@ import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as yup from "yup";
 import jwtDecode, * as ywt_decode from 'jwt-decode';
+import './Login.css';
+import { useDispatch, useSelector } from "react-redux";
+import { authSlice } from "../../store/authSlice";
 
 const loginSchema = yup.object({
     email: yup.string().required("Email is required field").email("Email is not valid"),
@@ -11,6 +14,8 @@ const loginSchema = yup.object({
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
 
   const submitLogin = (values) => {
     fetch("https://js-course-server.onrender.com/user/login", {
@@ -24,7 +29,8 @@ const Login = () => {
         .then((data) => {
             if (data.token) {
                 const decoded = jwtDecode(data.token);
-                console.log("data", data, "token", decoded)
+              console.log("data", data, "token", decoded);
+              dispatch(authSlice.actions.setData(decoded));
                 localStorage.setItem("auth_token", data.token);
                 navigate("/");
           }

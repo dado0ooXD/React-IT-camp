@@ -4,12 +4,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    
 }
 
 .card {
     height: 400px;
     width: 400px;
     background-color: gray;
+    border-radius: 50%;
 
     display: flex;
     justify-content: center;

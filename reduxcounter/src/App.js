@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 import Counter from './pages/Counter';
 import Login from './pages/Login/Login';
+import { useEffect } from 'react';
 
 import { useNavigate, } from 'react-router-dom';
 import { counterSlice } from './store/counterSlice';
