@@ -3,11 +3,13 @@ import './Counter.css';
 import { counterSlice } from '../store/counterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { authSlice } from '../store/authSlice';
 
 const Counter = () => {
   const navigate = useNavigate();
     const dispatch = useDispatch();
-    const counterState = useSelector((state) => state.counter);
+  const counterState = useSelector((state) => state.counter);
+  const authState = useSelector((state) => state.auth);
     // const broj = counterState.counter;
      const token = localStorage.getItem("auth_token");
  
@@ -19,6 +21,7 @@ const Counter = () => {
     //   // }
     //  }, []);
 
+  // useEffect(() => {}, [])
   
     const increase = () => {
         dispatch(counterSlice.actions.increase());
@@ -38,7 +41,11 @@ const Counter = () => {
   return (
     <div className='main'>
       <div>
-      
+        {token ? (
+           <button onClick={() => {localStorage.removeItem("auth_token")}}>Logout</button>
+        ) : (
+           <button onClick={() => {navigate("/login")}}>Login</button>
+        )}
      </div>
           
           <div className='card'>
@@ -47,7 +54,7 @@ const Counter = () => {
               <div>
               <button onClick={increase}>increase</button>
           <button onClick={reset}>reset</button>
-          <button onClick={saveCount}>Save count</button>
+          <button onClick={saveCount} disabled={!token}>Save count</button>
              </div>
       </div>
     </div>
