@@ -8,9 +8,21 @@ import { useEffect } from 'react';
 
 import { useNavigate, } from 'react-router-dom';
 import { counterSlice } from './store/counterSlice';
+import { authSlice } from './store/authSlice';
+import jwtDecode, * as ywt_decode from 'jwt-decode';
 import {store} from './store/store'
 
 const NavRoutes = () => {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token");
+    if (token) {
+      const decoded = jwtDecode(token);
+      dispatch(authSlice.actions.setData(decoded))
+    }
+   }, []);
+
   return (
     <BrowserRouter>
       <Routes>

@@ -31,6 +31,7 @@ const Login = () => {
                 const decoded = jwtDecode(data.token);
               console.log("data", data, "token", decoded);
               dispatch(authSlice.actions.setData(decoded));
+              console.log(authState);
                 localStorage.setItem("auth_token", data.token);
                 navigate("/");
           }

@@ -12,12 +12,9 @@ export const authSlice = createSlice({
   initialState: initialState,
   reducers: {
     setData(state, actions) {
-      // console.log(state.id)
-      const data = actions.payload;
-      // console.log(data, "data");
-      state = data;
-      // console.log(state);
-      return state;
+    const data = actions.payload;
+    state = data;
+    return state;
     },
     logout(state, actions) {
       return initialState;
