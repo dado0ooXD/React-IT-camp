@@ -33,8 +33,18 @@ const Counter = () => {
 }
 
   const saveCount = () => {
+    const datum = new Date();
+   
+    const year = datum.getFullYear();
+    const month = datum.getMonth() + 1;
+    const day = datum.getDate();
+    // console.log(year, month, day);
+
+    const savedAt = `${day}/${month}/${year}`
+
     const savedData = {
       count: counterState.counter,
+      savedAt: savedAt,
       fullName: authState.fullName,
       id: authState.id
     }
@@ -66,6 +76,7 @@ const Counter = () => {
         (<div className='sacuvani-countovi' key={index}>
           <h1>Ime korisnika: {item.fullName}</h1>
           <h3>Count: {item.count}</h3>
+          <h5>SavedAt: {item.savedAt }</h5>
           <h6>ID korisnika: {item.id }</h6>
         </div>))}
       {/* </div> */}
