@@ -26,6 +26,7 @@ const QuoteCard = (props) => {
         };
         dispatch(quoteSlice.actions.addReport(reportObject));
         console.log(quoteState.reports)
+        console.log(authState)
     }
     
  

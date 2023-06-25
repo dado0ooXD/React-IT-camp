@@ -11,7 +11,7 @@ import Reports from './components/Reports';
 import { Provider, useDispatch } from 'react-redux';
 import { store } from './store/store';
 import { useEffect } from 'react';
-import jwtDecode from 'jwt-decode';
+import jwtDecode, * as ywt_decode from 'jwt-decode';
 import { authSlice } from './store/authSlice';
 import Favorites from './components/Favorites';
 
@@ -20,7 +20,7 @@ const NavigationRoutes = () => {
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
     if (token) {
-      const decoded = jwtDecode(token);
+      const decoded = jwtDecode(token)
       dispatch(authSlice.actions.setData(decoded))
     }
    }, []);
