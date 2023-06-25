@@ -7,21 +7,10 @@ import { authSlice } from '../store/authSlice';
 
 const Counter = () => {
   const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const counterState = useSelector((state) => state.counter);
   const authState = useSelector((state) => state.auth);
-    // const broj = counterState.counter;
-     const token = localStorage.getItem("auth_token");
- 
-    // useEffect(() => {
-     
-    //   // if (token) {
-    //   //   const decoded = jwtDecode(token);
-    //   //   dispatch(authSlice.actions.setData(decoded))
-    //   // }
-    //  }, []);
-
-  // useEffect(() => {}, [])
+  const token = localStorage.getItem("auth_token");
   
     const increase = () => {
         dispatch(counterSlice.actions.increase());
@@ -30,24 +19,24 @@ const Counter = () => {
 
     const reset = () => {
         dispatch(counterSlice.actions.reset());
-}
+    }
 
   const saveCount = () => {
+
     const datum = new Date();
-   
     const year = datum.getFullYear();
     const month = datum.getMonth() + 1;
     const day = datum.getDate();
     // console.log(year, month, day);
 
-    const savedAt = `${day}/${month}/${year}`
-
+    const savedAt = `${day}/${month}/${year}`;
     const savedData = {
       count: counterState.counter,
       savedAt: savedAt,
       fullName: authState.fullName,
       id: authState.id
     }
+
     dispatch(counterSlice.actions.saveValues(savedData))
     console.log(counterState.savedValues);
     console.log("auth state", authState)
@@ -55,21 +44,23 @@ const Counter = () => {
   
 
   return (
-    <div className='main'>
-    
-          
+    <div className='main'>  
       <div className='card'>
         <div className='login'>
    <button onClick={() => {navigate("/login")}}>Login</button>
      </div>
+        <div className='counter'>
+        <div>
         <h1>{counterState.counter}</h1>
         <h1>{counterState.savedValues.count}</h1>
+        </div>
               <div>
-              <button onClick={increase}>increase</button>
-          <button onClick={reset}>reset</button>
-          <button onClick={saveCount} disabled={!authState.id}>Save count</button>
+              <button className='increase' onClick={increase}>increase</button>
+          <button className="reset" onClick={reset}>reset</button>
+          <button className='save-count' onClick={saveCount} disabled={!authState.id}>Save count</button>
              </div>
       </div>
+        </div>
 
       {/* <div className='sacuvani-countovi'> */}
         {counterState.savedValues.map((item, index) =>

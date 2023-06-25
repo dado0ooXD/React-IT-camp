@@ -10,18 +10,52 @@
 }
 
 .card {
-    height: 200px;
-    width: 700px;
+    height: 400px;
+    width: 400px;
     background-color: gray;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
 
-.card button {
-    margin: 10px;
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 120px;
+}
+
+.increase {
+     margin: 10px;
+    border: none;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.reset{
+     margin: 10px;
+    border: none; height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+}
+
+.save-count {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
 }
 
 .sacuvani-countovi {
@@ -29,15 +63,17 @@
     width: 700px;
     border: 1px solid black;
     background-color: gray;
-}
-
-.sacuvani-countovi div {
-    border-bottom: 1px solid black;
+    padding-left: 20px;
 }
 
 
 .login{
-    display: flex;
-    justify-content: flex-start;
-    width: 700px;
+    width: 400px;
+    /* margin-bottom: 50px; */
+}
+
+.login button {
+    border: none;
+    color: red; 
+    padding: 10px 30px;  
 }
