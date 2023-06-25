@@ -38,7 +38,9 @@ const Login = () => {
       });
   };
 
-    return <Formik
+  return (
+    <div className="login-wrapper">
+      <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, actions) => {
             submitLogin(values)
@@ -88,12 +90,18 @@ const Login = () => {
                 Submit
                   </button>
                   
-                  
+                  <p className="no-account" onClick={() => {
+                    // setIsLoading(true);
+                    // setTimeout(() => {navigate("/signup");}, 1000);
+                    // // navigate("/signup")
+                  }}>Sign Up?</p>
                 </div>
             </div>
     )}
       
   </Formik>;
+      </div>
+    )
 };
 
 export default Login;

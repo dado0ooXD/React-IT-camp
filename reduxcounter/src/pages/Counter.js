@@ -79,9 +79,9 @@ const Counter = () => {
           {counterState.savedValues.map((item, index) => (
         <div className="sacuvani-countovi" key={index}>
           <h1>Ime korisnika: {item.fullName}</h1>
-          <h3>Count: {item.count}</h3>
+          <h2>Count: {item.count}</h2>
           <h5>SavedAt: {item.savedAt}</h5>
-          <h6>ID korisnika: {item.id}</h6>
+          <h4>ID korisnika: {item.id}</h4>
         </div>
       ))}
     </div></>

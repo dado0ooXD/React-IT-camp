@@ -14,7 +14,7 @@
   }
 
   .inputs {
-    max-width: 200px;
+    width: 160px;
     height: 30px;
     border: 2px solid transparent;
     outline: none;
@@ -25,6 +25,7 @@
     transition: .5s linear;
     font-family: monospace;
     letter-spacing: 1px;
+    
   }
   
   .inputs:focus {
@@ -36,8 +37,13 @@
   
   .inputs:focus::placeholder {
     color: #fa4753;
+    /* text-align: center; */
     
   }
+
+  /* .inputs::placeholder{
+    text-align: center;
+  } */
 
   /* BUTTON */
 
@@ -46,7 +52,7 @@
     display: inline-block;
     padding: 5px 15px;
     font-size: 14px;
-    width: 200px;
+    width: 160px;
     font-weight: 700;
     color: white;
     border: 2px solid #3f3f3f;
@@ -60,6 +66,7 @@
     font-family: inherit;
     margin-top: 7px;
     font-family: monospace;
+    margin-top: 20px;
    }
    
    .submit-btn::before {
@@ -90,8 +97,9 @@
 .no-account{
   color: #3f3f3f;
   font-family: monospace;
-  margin-top: 5px;
+  margin-top: 15px;
   cursor: pointer;
+  
 }
 
 .no-account:hover{
