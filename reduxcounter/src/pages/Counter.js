@@ -63,11 +63,11 @@ const Counter = () => {
           </div>
           <div>
             <button className="increase" onClick={increase}></button>
-            <button className="reset" onClick={reset}></button>
+            <button className="reset" disabled={counterState.counter === 0} onClick={reset}></button>
             <button
               className="save-count"
               onClick={saveCount}
-              disabled={!authState.id}
+              disabled={!authState.id || counterState.counter === 0}
             >
               {" "}
             </button>
@@ -78,10 +78,10 @@ const Counter = () => {
     <div className="user-data-div">
           {counterState.savedValues.map((item, index) => (
         <div className="sacuvani-countovi" key={index}>
-          <h1>Ime korisnika: {item.fullName}</h1>
+          <h1>Username: {item.fullName}</h1>
           <h2>Count: {item.count}</h2>
           <h5>SavedAt: {item.savedAt}</h5>
-          <h4>ID korisnika: {item.id}</h4>
+          <h4>User ID: {item.id}</h4>
         </div>
       ))}
     </div></>
