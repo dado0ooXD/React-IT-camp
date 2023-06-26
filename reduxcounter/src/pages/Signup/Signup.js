@@ -44,7 +44,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="main">
+    <div className="mejn">
       <Formik
         initialValues={{
           fullName: "",
@@ -66,7 +66,7 @@ const Signup = () => {
                   handleSubmit
               }) => (
                 <div className="forma">
-                <div className="input-div">
+                
                   <input
                     className="inp"
                     type="email"
@@ -79,8 +79,8 @@ const Signup = () => {
                   <p className="error-message">
                     {errors.email && touched.email && errors.email}
                   </p>
-                </div>
-                <div className="input-div">
+               
+                
                   <input
                     className="inp"
                     type="password"
@@ -93,8 +93,8 @@ const Signup = () => {
                   <p className="error-message">
                     {errors.password && touched.password && errors.password}
                   </p>
-                </div>
-                <div className="input-div">
+               
+                
                   <input
                     className="inp"
                     type="password"
@@ -109,8 +109,8 @@ const Signup = () => {
                       touched.confirmPassword &&
                       errors.confirmPassword}
                   </p>
-                </div>
-                <div className="input-div">
+                
+                
                   <input
                     className="inp"
                     type="text"
@@ -120,20 +120,6 @@ const Signup = () => {
                     value={values.fullName}
                     placeholder="Username"
                   />
-                </div>
-                {/* <button className="signup-btn" onClick={handleSubmit} type="button">
-              Submit
-              </button> */}
-                <button
-                  className="signup-btn"
-                  type="button"
-                  onClick={() => {
-                    // setIsLoading(true);
-                    handleSubmit();
-                  }}
-                >
-                  Sign Up
-                </button>
                 {/* <p
                   className="have-acc"
                   onClick={() => {
@@ -145,7 +131,18 @@ const Signup = () => {
                 >
                   You already have an account?
                 </p> */}
-              </div>
+                  <button
+                  className="signup-btn"
+                  type="button"
+                  onClick={() => {
+                    // setIsLoading(true);
+                    handleSubmit();
+                  }}
+                >
+                  Sign Up
+                </button>
+          </div>
+          
               )}
       </Formik>
     </div>
