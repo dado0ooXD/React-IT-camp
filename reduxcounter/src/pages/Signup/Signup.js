@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -23,6 +24,7 @@ const signupSchema = yup.object({
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitSignup = (values) => {
     fetch("https://js-course-server.onrender.com/user/signup", {
@@ -64,7 +66,26 @@ const Signup = () => {
                   handleChange,
                   handleBlur,
                   handleSubmit
-              }) => (
+              }) =>  isLoading ? (
+                <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+                <div class="wheel"></div>
+                <div class="hamster">
+                  <div class="hamster__body">
+                    <div class="hamster__head">
+                      <div class="hamster__ear"></div>
+                      <div class="hamster__eye"></div>
+                      <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                  </div>
+                </div>
+                <div class="spoke"></div>
+              </div>      
+          ): (
                 <div className="forma">
                 
                   <input
@@ -120,22 +141,11 @@ const Signup = () => {
                     value={values.fullName}
                     placeholder="Username"
                   />
-                {/* <p
-                  className="have-acc"
-                  onClick={() => {
-                    setIsLoading(true);
-                    setTimeout(() => {
-                      navigate("/login");
-                    }, 1000);
-                  }}
-                >
-                  You already have an account?
-                </p> */}
                   <button
                   className="signup-btn"
                   type="button"
                   onClick={() => {
-                    // setIsLoading(true);
+                    setIsLoading(true);
                     handleSubmit();
                   }}
                 >
