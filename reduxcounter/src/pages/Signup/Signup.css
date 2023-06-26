@@ -3,13 +3,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-color: #dadada;
+    position: relative;
+}
+
+.nazad {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  position: absolute;
+  bottom: 570px;
+  left: 30px;
+}
+
+.nazad-btn {
+   height: 60px;
+   width: 60px;
+   background-color: white;
+   border: 1px solid #318CE7;
+   color: #318CE7;
+   border-radius: 50%;
+   cursor: pointer;
 }
   .forma {
     /* height: 500px; */
     /* height: 330px;
     width: 330px; */
     padding: 40px;
-    border: 2px solid black;
+    border: 2px solid #318CE7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,11 +41,27 @@
 
   .forma input {
     width: 190px;
+    height: 27px;
+    border: 2px solid #318CE7;
+    outline: none;
+    font-size: 12px;
+    color: #318CE7;
+    font-weight: bold;
+  }
+
+  .error-message {
+    font-weight: bold;
   }
 
   .forma button {
     margin-top: 30px;
-    padding: 3px 30px;
+    padding: 4px 30px;
+    border-radius: 2px;
+    background-color: #318CE7;
+    border: none;
+    color: #dadada;
+    font-weight: bold;
+    cursor: pointer;
   }
 
   /* .forma input ::placeholder {
@@ -31,11 +70,13 @@
 
   .inp::placeholder {
     text-align: center;
+    color: #318CE7
   }
 
   .inp {
 padding-left: 5px;
   }
+
 
 
 

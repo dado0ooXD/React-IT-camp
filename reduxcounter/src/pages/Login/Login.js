@@ -93,7 +93,7 @@ const Login = () => {
                   <p className="no-account" onClick={() => {
                     // setIsLoading(true);
                     // setTimeout(() => {navigate("/signup");}, 1000);
-                    // // navigate("/signup")
+                    navigate("/signup")
                   }}>Sign Up?</p>
                 </div>
             </div>

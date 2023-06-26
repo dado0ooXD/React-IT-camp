@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { ref } from "yup";
-import './Signup.css';
+import "./Signup.css";
 
 const signupSchema = yup.object({
   fullName: yup.string().required().min(2).max(25),
@@ -41,12 +41,25 @@ const Signup = () => {
           navigate("/");
         } else {
           alert("Neuspesno");
+          setIsLoading(false);
         }
       });
   };
 
   return (
     <div className="mejn">
+      {!isLoading && (
+        <div className="nazad">
+          <button
+            className="nazad-btn"
+            onClick={() => {
+                navigate("/");
+            }}
+          >
+            Home
+          </button>
+        </div>
+      )}
       <Formik
         initialValues={{
           fullName: "",
@@ -58,102 +71,109 @@ const Signup = () => {
           submitSignup(values);
         }}
         validationSchema={signupSchema}
-          >
-              {({
-                  values,
-                  errors,
-                  touched,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit
-              }) =>  isLoading ? (
-                <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
-                <div class="wheel"></div>
-                <div class="hamster">
-                  <div class="hamster__body">
-                    <div class="hamster__head">
-                      <div class="hamster__ear"></div>
-                      <div class="hamster__eye"></div>
-                      <div class="hamster__nose"></div>
-                    </div>
-                    <div class="hamster__limb hamster__limb--fr"></div>
-                    <div class="hamster__limb hamster__limb--fl"></div>
-                    <div class="hamster__limb hamster__limb--br"></div>
-                    <div class="hamster__limb hamster__limb--bl"></div>
-                    <div class="hamster__tail"></div>
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) =>
+          isLoading ? (
+            <div
+              aria-label="Orange and tan hamster running in a metal wheel"
+              role="img"
+              class="wheel-and-hamster"
+            >
+              <div class="wheel"></div>
+              <div class="hamster">
+                <div class="hamster__body">
+                  <div class="hamster__head">
+                    <div class="hamster__ear"></div>
+                    <div class="hamster__eye"></div>
+                    <div class="hamster__nose"></div>
                   </div>
+                  <div class="hamster__limb hamster__limb--fr"></div>
+                  <div class="hamster__limb hamster__limb--fl"></div>
+                  <div class="hamster__limb hamster__limb--br"></div>
+                  <div class="hamster__limb hamster__limb--bl"></div>
+                  <div class="hamster__tail"></div>
                 </div>
-                <div class="spoke"></div>
-              </div>      
-          ): (
-                <div className="forma">
-                
-                  <input
-                    className="inp"
-                    type="email"
-                    name="email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                    placeholder="Email"
-                  />
-                  <p className="error-message">
-                    {errors.email && touched.email && errors.email}
-                  </p>
-               
-                
-                  <input
-                    className="inp"
-                    type="password"
-                    name="password"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password}
-                    placeholder="Password"
-                  />
-                  <p className="error-message">
-                    {errors.password && touched.password && errors.password}
-                  </p>
-               
-                
-                  <input
-                    className="inp"
-                    type="password"
-                    name="confirmPassword"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.confirmPassword}
-                    placeholder="Confirm password"
-                  />
-                  <p className="error-message">
-                    {errors.confirmPassword &&
-                      touched.confirmPassword &&
-                      errors.confirmPassword}
-                  </p>
-                
-                
-                  <input
-                    className="inp"
-                    type="text"
-                    name="fullName"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.fullName}
-                    placeholder="Username"
-                  />
-                  <button
-                  className="signup-btn"
-                  type="button"
-                  onClick={() => {
-                    setIsLoading(true);
-                    handleSubmit();
-                  }}
-                >
-                  Sign Up
-                </button>
-          </div>
-          
-              )}
+              </div>
+              <div class="spoke"></div>
+            </div>
+          ) : (
+            <div className="forma">
+              <input
+                className="inp"
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                placeholder="Email"
+              />
+              <p className="error-message">
+                {errors.email && touched.email && errors.email}
+              </p>
+
+              <input
+                className="inp"
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                placeholder="Password"
+              />
+              <p className="error-message">
+                {errors.password && touched.password && errors.password}
+              </p>
+
+              <input
+                className="inp"
+                type="password"
+                name="confirmPassword"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmPassword}
+                placeholder="Confirm password"
+              />
+              <p className="error-message">
+                {errors.confirmPassword &&
+                  touched.confirmPassword &&
+                  errors.confirmPassword}
+              </p>
+
+              <input
+                className="inp"
+                type="text"
+                name="fullName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.fullName}
+                placeholder="Username"
+              />
+              <button
+                className="signup-btn"
+                type="button"
+                disabled={
+                  values.email === "" ||
+                  values.fullName === "" ||
+                  values.confirmPassword === "" ||
+                  values.password === ""
+                }
+                onClick={() => {
+                  setIsLoading(true);
+                  handleSubmit();
+                }}
+              >
+                Sign Up
+              </button>
+            </div>
+          )
+        }
       </Formik>
     </div>
   );
