@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { ref } from "yup";
-import { useNavigate } from "react-router";
+import './Signup.css';
 
 const signupSchema = yup.object({
   fullName: yup.string().required().min(2).max(25),
@@ -66,15 +66,6 @@ const Signup = () => {
                   handleSubmit
               }) => (
                 <div className="forma">
-                {/* <button
-              onClick={() => {
-                console.log(values, "values");
-                console.log(errors, "errors");
-                console.log(touched, "touched");
-              }}
-            >
-              Console log states
-            </button> */}
                 <div className="input-div">
                   <input
                     className="inp"

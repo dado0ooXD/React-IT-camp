@@ -11,6 +11,7 @@ import { counterSlice } from './store/counterSlice';
 import { authSlice } from './store/authSlice';
 import jwtDecode, * as ywt_decode from 'jwt-decode';
 import {store} from './store/store'
+import Signup from './pages/Signup/Signup';
 
 const NavRoutes = () => {
 
@@ -29,7 +30,8 @@ const NavRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Counter />} />
-        <Route path='/login' element={ <Login/>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup/>}/>
     </Routes>
     </BrowserRouter>
   );

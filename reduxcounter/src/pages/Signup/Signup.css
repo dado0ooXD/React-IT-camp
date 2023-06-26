@@ -1,0 +1,97 @@
+.main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forma {
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    padding: 30px;
+    padding-right: 13px;
+    padding-bottom: 15px;
+    
+  
+}
+
+/* INPUT */
+
+.inp {
+    font-family: monospace;
+  max-width: 220px;
+  outline: none;
+  border: 1px solid #dadada;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #f3f7fe;
+  transition: .3s;
+  color: #3b82f6;
+  height: 35px;
+  /* margin-right: 20px; */
+}
+
+.inp:focus{
+    border: 1px solid #3b82f6;
+    box-shadow: 0 0 0 4px #3b83f65f
+}
+/* 
+.input-div {
+    margin-right: 20px;
+} */
+
+/* BUTTON */
+
+.signup-btn {
+  font-size: 15px;
+  padding: 7px 14px;
+  border: none;
+  width: 210px;
+  background-color: #3b82f6;
+  color: white;
+  font-family:monospace ;
+  margin-top: 25px;
+   }
+   
+   /* .signup-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.4s;
+   }
+   
+   .signup-btn span:after {
+    content: 'click';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.7s;
+   }
+   
+   .signup-btn:hover span {
+    padding-right: 3.55em;
+   }
+   
+   .signup-btn:hover span:after {
+    opacity: 4;
+    right: 0;
+   } */
+
+   .have-acc{
+    font-family: monospace;
+    font-size: 13px;
+    color: #3b82f6;
+    margin-top: 10px;
+    /* margin-left: 5px; */
+   }
+
+   .have-acc:hover{
+    color: #dadada;
+    cursor: pointer;
+   }
+
+
+
+   
