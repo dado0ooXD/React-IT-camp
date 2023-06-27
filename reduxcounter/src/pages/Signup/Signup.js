@@ -53,7 +53,8 @@ const Signup = () => {
           <button
             className="nazad-btn"
             onClick={() => {
-                navigate("/");
+              setIsLoading(true);
+                setTimeout(() => {navigate("/")}, 2000)
             }}
           >
             Home
@@ -84,7 +85,7 @@ const Signup = () => {
             <div
               aria-label="Orange and tan hamster running in a metal wheel"
               role="img"
-              class="wheel-and-hamster"
+              className="wheel-and-hamster"
             >
               <div className="wheel"></div>
               <div className="hamster">
