@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Counter.css";
 import { counterSlice } from "../store/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { authSlice } from "../store/authSlice";
+
 
 const Counter = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Counter = () => {
   const counterState = useSelector((state) => state.counter);
   const authState = useSelector((state) => state.auth);
   const token = localStorage.getItem("auth_token");
+  const [isLoading, setIsLoading] = useState(false);
 
   const increase = () => {
     dispatch(counterSlice.actions.increase());
@@ -43,11 +45,14 @@ const Counter = () => {
 
   return (
     <>
-        <div className="main">
+  
+      <div className="main">
+    
       <div className="login">
         <button
           className="login-button"
-          onClick={() => {
+            onClick={() => {
+              setIsLoading(true);
             navigate("/login");
           }}
         >

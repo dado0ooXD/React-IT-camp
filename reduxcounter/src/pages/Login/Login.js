@@ -114,8 +114,8 @@ const Login = () => {
                   </button>
                   
                   <p className="no-account" onClick={() => {
-                
-                    navigate("/signup")
+                  setIsLoading(true);
+                    // setTimeout(() => {navigate("/signup")}, 3000)
                   }}>Sign Up?</p>
                 </div>
             </div>)
