@@ -15,6 +15,7 @@ const loginSchema = yup.object({
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const authState = useSelector((state) => state.auth);
 
   const submitLogin = (values) => {
@@ -54,7 +55,28 @@ const Login = () => {
         handleBlur,
         handleSubmit,
         }) => (
-            <div className="formica">
+          isLoading ? (<div
+            aria-label="Orange and tan hamster running in a metal wheel"
+            role="img"
+            className="wheel-and-hamster"
+          >
+            <div className="wheel"></div>
+            <div className="hamster">
+              <div className="hamster__body">
+                <div className="hamster__head">
+                  <div className="hamster__ear"></div>
+                  <div className="hamster__eye"></div>
+                  <div className="hamster__nose"></div>
+                </div>
+                <div className="hamster__limb hamster__limb--fr"></div>
+                <div className="hamster__limb hamster__limb--fl"></div>
+                <div className="hamster__limb hamster__limb--br"></div>
+                <div className="hamster__limb hamster__limb--bl"></div>
+                <div className="hamster__tail"></div>
+              </div>
+            </div>
+            <div className="spoke"></div>
+          </div>) : (<div className="formica">
               <div>
                 <input
                   type="email"
@@ -84,19 +106,20 @@ const Login = () => {
                 </p>
               </div>
                 <div >
-                  <button className="submit-btn" onClick={() => {
+                <button className="submit-btn" onClick={() => {
+                  setIsLoading(true);
                 handleSubmit()
               }} type="button">
                 Submit
                   </button>
                   
                   <p className="no-account" onClick={() => {
-                    // setIsLoading(true);
-                    // setTimeout(() => {navigate("/signup");}, 1000);
+                
                     navigate("/signup")
                   }}>Sign Up?</p>
                 </div>
-            </div>
+            </div>)
+            
     )}
       
   </Formik>;
