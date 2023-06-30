@@ -17,14 +17,14 @@ const NavRoutes = () => {
 
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
-  useEffect(() => {
-    const token = localStorage.getItem("auth_token");
-    if (token) {
-      const decoded = jwtDecode(token);
-      dispatch(authSlice.actions.setData(decoded))
-    }
-    console.log(authState)
-   }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("auth_token");
+  //   if (token) {
+  //     const decoded = jwtDecode(token);
+  //     dispatch(authSlice.actions.setData(decoded))
+  //   }
+  //   console.log(authState)
+  //  }, []);
 
   return (
     <BrowserRouter>
