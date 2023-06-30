@@ -57,7 +57,11 @@ const Counter = () => {
           }}
         >
           Login
-        </button>
+          </button>
+          {authState.id ? (<button onClick={() => {
+            dispatch(authSlice.actions.logout())
+            console.log(authState);
+          }} >Logout</button>) : (<div></div>)}
       </div>
 
       <div className="card">
