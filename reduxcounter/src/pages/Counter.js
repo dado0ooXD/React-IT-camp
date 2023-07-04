@@ -4,7 +4,7 @@ import { counterSlice } from "../store/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { authSlice } from "../store/authSlice";
-
+import { Card, Typography } from "@mui/material";
 
 const Counter = () => {
   const navigate = useNavigate();
@@ -45,55 +45,69 @@ const Counter = () => {
 
   return (
     <>
-  
       <div className="main">
-    
-      <div className="login">
-        <button
-          className="login-button"
+        <div className="login">
+          <button
+            className="login-button"
             onClick={() => {
               setIsLoading(true);
-            navigate("/login");
-          }}
-        >
-          Login
+              navigate("/login");
+            }}
+          >
+            Login
           </button>
-          {authState.id ? (<button onClick={() => {
-            dispatch(authSlice.actions.logout())
-            console.log(authState);
-          }} >Logout</button>) : (<div></div>)}
-      </div>
-
-      <div className="card">
-        <div className="counter">
-          <div>
-            <h1>{counterState.counter}</h1>
-            <h1>{counterState.savedValues.count}</h1>
-          </div>
-          <div>
-            <button className="increase" onClick={increase}></button>
-            <button className="reset" disabled={counterState.counter === 0} onClick={reset}></button>
+          {authState.id ? (
             <button
-              className="save-count"
-              onClick={saveCount}
-              disabled={!authState.id || counterState.counter === 0}
+              onClick={() => {
+                dispatch(authSlice.actions.logout());
+                console.log(authState);
+              }}
             >
-              {" "}
+              Logout
             </button>
+          ) : (
+            <div></div>
+          )}
+        </div>
+
+        <div className="card">
+          <div className="counter">
+            <div>
+              <h1>{counterState.counter}</h1>
+              <h1>{counterState.savedValues.count}</h1>
+            </div>
+            <div>
+              <button className="increase" onClick={increase}></button>
+              <button
+                className="reset"
+                disabled={counterState.counter === 0}
+                onClick={reset}
+              ></button>
+              <button
+                className="save-count"
+                onClick={saveCount}
+                disabled={!authState.id || counterState.counter === 0}
+              >
+                {" "}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div className="user-data-div">
-          {counterState.savedValues.map((item, index) => (
-        <div className="sacuvani-countovi" key={index}>
-          <h1>Username: {item.fullName}</h1>
-          <h2>Count: {item.count}</h2>
-          <h5>SavedAt: {item.savedAt}</h5>
-          <h4>User ID: {item.id}</h4>
-        </div>
-      ))}
-    </div></>
+      <div className="user-data-div">
+        {counterState.savedValues.map((item, index) => (
+          <Card variant="outlined"  sx={{ mt: 3, width: 700, p: 3 }}>
+            {" "}
+            <Typography variant="h4">Username: {item.fullName}</Typography>
+            <Typography variant="h5">Count: {item.count}</Typography>
+            <Typography variant="h6">SavedAt: {item.savedAt}</Typography>
+            <Typography variant="p">User ID: {item.id}</Typography>
+          </Card>
+          // <div className="sacuvani-countovi" key={index}>
+          // </div>
+        ))}
+      </div>
+    </>
   );
 };
 
