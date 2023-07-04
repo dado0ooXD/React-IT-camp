@@ -99,9 +99,9 @@ const Counter = () => {
           <Card variant="outlined"  sx={{ mt: 3, width: 700, p: 3 }}>
             {" "}
             <Typography variant="h4">Username: {item.fullName}</Typography>
-            <Typography variant="h5">Count: {item.count}</Typography>
-            <Typography variant="h6">SavedAt: {item.savedAt}</Typography>
-            <Typography variant="p">User ID: {item.id}</Typography>
+            <Typography variant="h5" mt={1}>Count: {item.count}</Typography>
+            <Typography variant="h6" mt={1}>SavedAt: {item.savedAt}</Typography>
+            <Typography variant="p" mt={4}>User ID: {item.id}</Typography>
           </Card>
           // <div className="sacuvani-countovi" key={index}>
           // </div>
