@@ -12,11 +12,14 @@ import { authSlice } from './store/authSlice';
 import jwtDecode, * as ywt_decode from 'jwt-decode';
 import {store} from './store/store'
 import Signup from './pages/Signup/Signup';
+import { themeSlice } from './store/themeSlice';
 
 const NavRoutes = () => {
 
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
+  const themeState = useSelector((state) => state.theme);
+  
   // useEffect(() => {
   //   const token = localStorage.getItem("auth_token");
   //   if (token) {

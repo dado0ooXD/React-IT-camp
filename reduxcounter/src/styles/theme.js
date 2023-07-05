@@ -12,8 +12,17 @@ export const theme = createTheme({
         secondary: {
             main: green[500]
         },
-        grey: "#aaa",
-        text: "#000",
-        background: "#ccc"
+        // grey: {
+        //     main: "#aaa"
+        // },
+        text: {
+            primary: "#000",
+            secondary: "",
+            disabled:"#ccc" 
+        },
+        background: "#ccc",
+       
     }
+
+    
 })

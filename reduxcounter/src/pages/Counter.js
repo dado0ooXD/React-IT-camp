@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { authSlice } from "../store/authSlice";
 import { Card, Typography } from "@mui/material";
+import { theme } from "../styles/theme";
 
 const Counter = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const Counter = () => {
 
   return (
     <>
-      <div className="main">
+      <div className="main" style={{backgroundColor: theme.palette.background}}>
         <div className="login">
           <button
             className="login-button"
