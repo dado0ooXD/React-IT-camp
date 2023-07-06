@@ -15,6 +15,7 @@ export const themeSlice = createSlice({
             else {
                 state.theme = "light"
             }
+            return state;
    }
     }
 });

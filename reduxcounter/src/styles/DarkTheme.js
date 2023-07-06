@@ -17,8 +17,8 @@ export const themeDark = createTheme({
         // },
         text: {
             primary: "#000",
-            secondary: "",
-            disabled:"#ccc" 
+            secondary: "f4f0fa",
+            disabled: "#ccc",
         },
         background: "#ccc",
        

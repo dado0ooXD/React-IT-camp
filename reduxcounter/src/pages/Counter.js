@@ -4,7 +4,9 @@ import { counterSlice } from "../store/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { authSlice } from "../store/authSlice";
-import { Card, Typography } from "@mui/material";
+import { LightMode, DarkMode } from '@mui/icons-material';
+import { themeSlice } from "../store/themeSlice";
+import {Box, Switch, useTheme, Typography, Card} from '@mui/material'
 
 
 const Counter = () => {
@@ -14,6 +16,8 @@ const Counter = () => {
   const authState = useSelector((state) => state.auth);
   const token = localStorage.getItem("auth_token");
   const [isLoading, setIsLoading] = useState(false);
+  const themeState = useSelector((state) => state.theme);
+  const theme = useTheme();
 
   const increase = () => {
     dispatch(counterSlice.actions.increase());
@@ -46,9 +50,9 @@ const Counter = () => {
 
   return (
     <>
-      <div className="main" >
-        <div className="login">
-          <div className="navbar-logo">Counter</div>
+      <div className="main" style={{ backgroundColor: theme.palette.text.primary }}>
+        <div className="login" style={{backgroundColor: theme.palette.background}}>
+          <div className="navbar-logo" style={{color: theme.palette.text.secondary}}>Counter</div>
           <button
             className="login-button"
             onClick={() => {
@@ -72,14 +76,14 @@ const Counter = () => {
           )}
         </div>
 
-        <div className="card">
-          <div className="counter">
+        <div className="card" style={{backgroundColor: theme.palette.background}}>
+          <div className="counter" style={{backgroundColor: theme.palette.background}}>
             <div>
-              <h1>{counterState.counter}</h1>
+              <h1 style={{color: theme.palette.text.secondary}}>{counterState.counter}</h1>
               <h1>{counterState.savedValues.count}</h1>
             </div>
             <div>
-              <button className="increase" onClick={increase}></button>
+              <button className="increase"  onClick={increase}></button>
               <button
                 className="reset"
                 disabled={counterState.counter === 0}
