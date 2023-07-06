@@ -1,28 +1,34 @@
 import { createTheme } from "@mui/material/styles";
-import { green, purple } from '@mui/material/colors'
-
+import { green, purple } from "@mui/material/colors";
 
 export const themeDark = createTheme({
-    palette: {
-        primary: {
-            main: purple[500],
-            light: purple[100],
-            dark: purple[900]
-        },
-        secondary: {
-            main: green[500]
-        },
-        // grey: {
-        //     main: "#aaa"
-        // },
-        text: {
-            primary: "#000",
-            secondary: "f4f0fa",
-            disabled: "#ccc",
-        },
-        background: "#ccc",
-       
-    }
-
-    
-})
+  palette: {
+    primary: {
+      main: green[700],
+    },
+    secondary: {
+      main: green[700],
+    },
+    background: "#333",
+    text: {
+      primary: "#fff",
+      secondary: "#fff",
+      disabled: "#ccc",
+    },
+  },
+  typography: {
+    h1: {
+      fontSize: "25px",
+      fontWeight: "bold",
+    },
+    h4: {
+      fontWeight: "bold",
+      fontSize: "30px",
+    },
+    // subtitle1: {},
+    // subtitle2: {},
+    // body1: {},
+    // body2: {},
+    // caption: {},
+  },
+});

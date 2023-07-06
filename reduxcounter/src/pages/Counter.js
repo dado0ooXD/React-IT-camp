@@ -4,9 +4,9 @@ import { counterSlice } from "../store/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { authSlice } from "../store/authSlice";
-import { LightMode, DarkMode } from '@mui/icons-material';
+import { LightMode, DarkMode } from "@mui/icons-material";
 import { themeSlice } from "../store/themeSlice";
-import {Box, Switch, useTheme, Typography, Card} from '@mui/material'
+import { Box, Switch, useTheme, Typography, Card } from "@mui/material";
 
 
 const Counter = () => {
@@ -50,9 +50,19 @@ const Counter = () => {
 
   return (
     <>
-      <div className="main" style={{ backgroundColor: theme.palette.text.primary }}>
-        <div className="login" style={{backgroundColor: theme.palette.background}}>
-          <div className="navbar-logo" style={{color: theme.palette.text.secondary}}>Counter</div>
+      <div
+        className="main"
+        
+      >
+        <div
+          className="login"
+        
+        >
+          <div
+            className="navbar-logo"
+          >
+            Counter
+          </div>
           <button
             className="login-button"
             onClick={() => {
@@ -72,18 +82,32 @@ const Counter = () => {
               Logout
             </button>
           ) : (
-            <div></div>
+            //   <div>
+            //      <LightMode color="primary" />
+            //   <Switch
+            //     onChange={dispatch(themeSlice.actions.setTheme())}
+            //     checked={theme === "dark"}
+            //     />
+            //     <DarkMode color="primary" />
+            // </div>
+              <div></div>
           )}
         </div>
 
-        <div className="card" style={{backgroundColor: theme.palette.background}}>
-          <div className="counter" style={{backgroundColor: theme.palette.background}}>
+        <div
+          className="card"
+        >
+          <div
+            className="counter"
+          >
             <div>
-              <h1 style={{color: theme.palette.text.secondary}}>{counterState.counter}</h1>
+              <h1   >
+                {counterState.counter}
+              </h1>
               <h1>{counterState.savedValues.count}</h1>
             </div>
             <div>
-              <button className="increase"  onClick={increase}></button>
+              <button className="increase" onClick={increase}></button>
               <button
                 className="reset"
                 disabled={counterState.counter === 0}
@@ -102,12 +126,18 @@ const Counter = () => {
       </div>
       <div className="user-data-div">
         {counterState.savedValues.map((item, index) => (
-          <Card variant="outlined"  sx={{ mt: 3, width: 700, p: 3 }}>
+          <Card variant="outlined" sx={{ mt: 3, width: 700, p: 3 }}>
             {" "}
             <Typography variant="h4">Username: {item.fullName}</Typography>
-            <Typography variant="h5" mt={1}>Count: {item.count}</Typography>
-            <Typography variant="h6" mt={1}>SavedAt: {item.savedAt}</Typography>
-            <Typography variant="p" mt={4}>User ID: {item.id}</Typography>
+            <Typography variant="h5" mt={1}>
+              Count: {item.count}
+            </Typography>
+            <Typography variant="h6" mt={1}>
+              SavedAt: {item.savedAt}
+            </Typography>
+            <Typography variant="p" mt={4}>
+              User ID: {item.id}
+            </Typography>
           </Card>
           // <div className="sacuvani-countovi" key={index}>
           // </div>
