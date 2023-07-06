@@ -12,14 +12,17 @@ import { authSlice } from './store/authSlice';
 import jwtDecode, * as ywt_decode from 'jwt-decode';
 import {store} from './store/store'
 import Signup from './pages/Signup/Signup';
-import { themeSlice } from './store/themeSlice';
+import { ThemeProvider } from '@mui/material';
+import { themeDark } from './styles/DarkTheme';
+import { themeLight } from './styles/LightTheme';
 
 const NavRoutes = () => {
 
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const themeState = useSelector((state) => state.theme);
-  
+  const selectedTheme = themeState.theme === "light" ? themeLight : themeDark;
+  // const selectedTheme = themeState.theme === "light" ? "dark" : "light"
   // useEffect(() => {
   //   const token = localStorage.getItem("auth_token");
   //   if (token) {
@@ -30,13 +33,15 @@ const NavRoutes = () => {
   //  }, []);
 
   return (
-    <BrowserRouter>
+    <ThemeProvider theme={selectedTheme}>
+      <BrowserRouter>
       <Routes>
         <Route path='/' element={<Counter />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup/>}/>
     </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
