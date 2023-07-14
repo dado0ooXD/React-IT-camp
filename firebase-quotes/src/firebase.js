@@ -36,7 +36,21 @@ export const getQuotes = async () => {
   return quoteList;
 };
 
+export const getQuoteById = async (id) => {
+  const docRef = doc(db, "quotes", id);
+  const docSnap = await getDoc(docRef);
+  const data = docSnap.data();
+  return {...data, id: id}
+}
+
 export const addQuote = async (data) => {
   const result = await addDoc(collection(db, "quotes"), data);
   return result;
 };
+
+export const updateQuote = async(id, data) => {
+  const docRef = doc(db, "quotes", id);
+  return await updateDoc(docRef, data)
+}
+
+
