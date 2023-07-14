@@ -27,19 +27,14 @@ const AddQuote = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
-  const submitForm = (values) => {
-    console.log(values, "values");
-    addQuote(JSON.stringify(values))
-      .then((data) => {
-        if (data.message) {
-          alert(data.message);
-        } else {
-          alert("Uspesno");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const submitForm = async(values) => {
+    try {
+      await addQuote(values);
+      alert("Citat je uspesno dodat!")
+    }
+    catch (error) {
+      console.log(error)
+    }
   };
 
   if (!token) {
