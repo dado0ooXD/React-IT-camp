@@ -33,25 +33,34 @@ function QuoteDetails() {
   //     });
   // };
 
-  
+  const deleteQuoteHandler = async() => {
+    try {
+      await deleteQuote(params.id);
+      navigate("/");
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="quote-details">
       <div className="quote-details-card">
         <h3>
-          <i>{quote.quoteText}</i>
+          <i>{quote.text}</i>
         </h3>
         <p>
           <b>
-            <i>{quote.quoteAuthor}</i>
+            <i>{quote.author}</i>
           </b>
         </p>
-        <p>{quote.quoteSource}</p>
+        <p>{quote.source}</p>
         <p className="likes">Likes: {quote.likes}</p>
         {/* <button onClick={likeHandler}>Like</button> */}
         <button onClick={() => navigate(`/quote/${params.id}/edit`)}>
           Edit
         </button>
+        <button onClick={() => {deleteQuoteHandler()}}>Delete</button>
       </div>
     </div>
   );
