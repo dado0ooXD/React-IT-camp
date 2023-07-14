@@ -15,20 +15,19 @@ import {
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "react-it-camp.firebaseapp.com",
-  projectId: "react-it-camp",
-  storageBucket: "react-it-camp.appspot.com",
-  messagingSenderId: "289608587597",
-  appId: "1:289608587597:web:28e0b4e6410b79a705ff04",
-  measurementId: "G-E4SD2NV0T2",
+  authDomain: "fir-quote-app-51077.firebaseapp.com",
+  projectId: "fir-quote-app-51077",
+  storageBucket: "fir-quote-app-51077.appspot.com",
+  messagingSenderId: "637096111630",
+  appId: "1:637096111630:web:fed4f741cf34ba392c565f",
+  measurementId: "G-6T2NJ0R5FJ"
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-export const db = getFirestore(firebaseApp);
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 
 export const getQuotes = async () => {
   const quotesCollection = collection(db, "quotes");
