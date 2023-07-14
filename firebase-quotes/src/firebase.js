@@ -44,7 +44,7 @@ export const getQuoteById = async (id) => {
 }
 
 export const addQuote = async (data) => {
-  const result = await addDoc(collection(db, "quotes"), data);
+  const result = await addDoc(collection(db, "quotes"),data);
   return result;
 };
 
@@ -53,4 +53,9 @@ export const updateQuote = async(id, data) => {
   return await updateDoc(docRef, data)
 }
 
+
+export const deleteQuote = async(id) => {
+  const docRef = doc(db, "quotes", id);
+  return await deleteDoc(docRef);
+}
 
