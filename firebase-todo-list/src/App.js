@@ -16,6 +16,7 @@ function App() {
 
   useEffect(() => {
     getAllTasks();
+    console.log(process.env.REACT_APP_DOMAIN)
   }, []);
 
   return (
@@ -48,9 +49,9 @@ function App() {
           </Button>
         </Box>
         <Box>
-          {todo.map((item, index) => (
-            <Typography>{ item.title}</Typography>
-          ))}
+          {todo.map((item, index) => {
+            return <Typography key = {index}>{item.title}</Typography>;
+          })}
         </Box>
       </Box>
     </Box>
