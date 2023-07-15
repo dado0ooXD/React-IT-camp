@@ -1,20 +1,38 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY ,
-  authDomain: REACT_APP_DOMAIN,
-  projectId: REACT_APP_PROJECT_ID,
-  storageBucket: REACT_APP_STORAGE_BUCKET,
-  messagingSenderId:REACT_APP_SENDER_ID,
-  appId: REACT_APP_APP_ID,
-  measurementId: REACT_APP_MEASUREMENT_ID
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  authDomain: process.env.REACT_APP_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER_ID,
+  appId: process.env.REACT_APP_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const db = getFirestore(app);
+
+export const getTodoList = async () => {
+  const todolistCollection = collection(db, "todo-list");
+  const res = await getDocs(todolistCollection);
+  const todoList = res.docs.map((doc) => {
+    const data = doc.data();
+    const id = doc.id;
+    return { ...data, id: id };
+  });
+  return todoList;
+};
+
+
+
+// const firebaseConfig = {
+//   apiKey: process.env.REACT_APP_FIREBASE_KEY,
+//   authDomain: process.env.REACT_APP_DOMAIN,
+//   projectId: process.env.REACT_APP_PROJECT_ID,
+//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+//   messagingSenderId: process.env.REACT_APP_SENDER_ID,
+//   appId: process.env.REACT_APP_ID,
+// };
