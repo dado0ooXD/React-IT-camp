@@ -1,5 +1,5 @@
 import "./App.css";
-import { Box, Typography, TextField } from "@mui/material";
+import { Box, Typography, TextField, Button } from "@mui/material";
 
 function App() {
   return (
@@ -20,7 +20,10 @@ function App() {
         }}
       >
         <Typography variant="h4">Todo List</Typography>
-        <TextField type="text" />
+        <Box display= "flex" marginTop = "15px">
+          <TextField type="text" />
+          <Button variant=  "contained" style = {{marginLeft: "5px"}} color = "primary">+</Button>
+        </Box>
       </Box>
     </Box>
   );
