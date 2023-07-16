@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { getTodoList, addItem, updateTodoItemData } from "./firebase";
+import { getTodoList, addItem, updateTodoItemData, deleteItem } from "./firebase";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
 function App() {
@@ -41,6 +41,12 @@ function App() {
     updateTodoItemData(item.id, { done: !item.done }).then(() => getAllTasks());
   };
 
+  const deleteItemHandler = (item) => {
+    deleteItem(item.id, {title: ""}).then(() => {
+      getAllTasks()
+     })
+   }
+
   return (
     <Box
       height="100vh"
@@ -77,21 +83,35 @@ function App() {
             +
           </Button>
         </Box>
-        <Box>
+        <Box width="100%">
           {todo.map((item, index) => {
             return (
-              <Typography
+              <Box
+                style={{
+                  padding: "10px",
+                  borderBottom: "1px solid black",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                }}
                 key={index}
                 onClick={() => {
                   isDone(item);
                 }}
-                style={{
-                  textDecoration: item.done ? "line-through" : "none",
-                  cursor: "pointer",
-                }}
               >
-                {item.title}
-              </Typography>
+                <Typography
+                  style={{
+                    textDecoration: item.done ? "line-through" : "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  {item.title}
+                </Typography>
+                <Button onClick={() => {
+                  deleteItemHandler(item)
+                }}>Delete</Button>
+              </Box>
             );
           })}
         </Box>

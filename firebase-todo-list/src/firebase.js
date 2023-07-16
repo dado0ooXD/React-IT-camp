@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -44,4 +44,11 @@ export const getItemById = async (id) => {
 export const updateTodoItemData = async (id, data) => {
   const docRef = doc(db, "todo-list", id);
   return await updateDoc(docRef, data)
+}
+
+// DELETE ITEM
+
+export const deleteItem = async(id, data) => {
+  const docRef = doc(db, "todo-list", id);
+ return await deleteDoc(docRef, data)
 }
