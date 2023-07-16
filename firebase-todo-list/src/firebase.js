@@ -27,7 +27,8 @@ export const getTodoList = async () => {
   return todoList;
 };
 
-// ADD
+// ADD ITEM
+
 export const addItem = async (data) => {
     const result = addDoc(collection(db, "todo-list"), data);
   return result;
@@ -40,7 +41,8 @@ export const getItemById = async (id) => {
   return {...data, id: id}
 }
 
-// UPDATE
+// UPDATE ITEM
+
 export const updateTodoItemData = async (id, data) => {
   const docRef = doc(db, "todo-list", id);
   return await updateDoc(docRef, data)
@@ -51,4 +53,23 @@ export const updateTodoItemData = async (id, data) => {
 export const deleteItem = async(id, data) => {
   const docRef = doc(db, "todo-list", id);
   await deleteDoc(docRef, data)
+}
+
+// CLEAR ALL TASKS
+
+export const deleteAllItems = async () => {
+  const collectionRef = collection(db, "todo-list");
+  const querySnapshot = await getDocs(collectionRef);
+
+  querySnapshot.forEach((doc) => {
+    deleteDoc(doc.ref)
+      .then(() => {
+      console.log("Document deleted successfully!")
+      })
+      .catch(err => {
+      console.log("ERROR", err)
+    })
+  })
+
+ 
 }

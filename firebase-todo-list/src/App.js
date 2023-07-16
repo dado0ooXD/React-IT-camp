@@ -5,6 +5,7 @@ import {
   addItem,
   updateTodoItemData,
   deleteItem,
+  deleteAllItems,
 } from "./firebase";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
@@ -53,6 +54,15 @@ function App() {
       getAllTasks();
     });
   };
+
+  // DELETING ALL TASKS FROM TODO
+
+  const clearAll = () => {
+    deleteAllItems()
+      .then(() => {
+      getAllTasks()
+    })
+  }
 
   return (
     <Box
@@ -112,7 +122,7 @@ function App() {
                   style={{
                     textDecoration: item.done ? "line-through" : "none",
                     cursor: "pointer",
-                    width: "100px",
+                    width: "120px",
                   }}
                 >
                   {item.title}
@@ -134,7 +144,9 @@ function App() {
           <Typography variant="p">
             You have {todo.length} pending tasks.
           </Typography>
-          <Button variant="contained"  style={{marginTop: "15px"}}>Clear All</Button>
+          <Button variant="contained" style={{ marginTop: "15px" }} onClick={() => {
+            clearAll()
+          }}>Clear All</Button>
         </Box>
       </Box>
     </Box>
