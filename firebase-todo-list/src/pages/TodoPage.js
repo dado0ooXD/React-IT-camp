@@ -7,6 +7,7 @@ import {
   deleteAllItems,
 } from "../firebase";
 import { Box, Typography, TextField, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function TodoPage() {
   const [taskName, setTaskName] = useState("");
@@ -57,11 +58,10 @@ function TodoPage() {
   // DELETING ALL TASKS FROM TODO
 
   const clearAll = () => {
-    deleteAllItems()
-      .then(() => {
-      getAllTasks()
-    })
-  }
+    deleteAllItems().then(() => {
+      getAllTasks();
+    });
+  };
 
   return (
     <Box
@@ -126,12 +126,16 @@ function TodoPage() {
                 >
                   {item.title}
                 </Typography>
+                <Button variant="contained" style={{ marginLeft: "30px" }}>
+                  <Link style={{textDecoration: "none", color: "white"}} to = {"/edit/" + item.id}>Edit</Link>
+                </Button>
                 <Button
                   onClick={() => {
                     deleteItemHandler(item);
                   }}
                   variant="contained"
                   color="error"
+                  style={{ marginLeft: "10px" }}
                 >
                   Delete
                 </Button>
@@ -139,13 +143,24 @@ function TodoPage() {
             );
           })}
         </Box>
-        <Box marginTop="15px" display = "flex" justifyContent= "center"  flexDirection = "column">
+        <Box
+          marginTop="15px"
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+        >
           <Typography variant="p">
             You have {todo.length} pending tasks.
           </Typography>
-          <Button variant="contained" style={{ marginTop: "15px" }} onClick={() => {
-            clearAll()
-          }}>Clear All</Button>
+          <Button
+            variant="contained"
+            style={{ marginTop: "15px" }}
+            onClick={() => {
+              clearAll();
+            }}
+          >
+            Clear All
+          </Button>
         </Box>
       </Box>
     </Box>
