@@ -18,7 +18,7 @@ function TodoPage() {
   const getAllTasks = () => {
     getTodoList().then((data) => {
       setTodo(data);
-      console.log(data);
+    //   console.log(data);
     });
   };
 
@@ -113,16 +113,16 @@ function TodoPage() {
                   justifyContent: "space-around",
                 }}
                 key={index}
-                onClick={() => {
-                  isDone(item);
-                }}
               >
                 <Typography
                   style={{
                     textDecoration: item.done ? "line-through" : "none",
                     cursor: "pointer",
-                    width: "120px",
-                  }}
+                            width: "100px",
+                        }}
+                        onClick={() => {
+                            isDone(item);
+                          }}
                 >
                   {item.title}
                 </Typography>

@@ -16,8 +16,10 @@ const Edit = () => {
   }, []);
     
     
+    
+    
     const submitEdit = () => {
-        updateTodoItemData(params.id, { title: updatedTask });
+        updateTodoItemData(params.id, { done: false, title: updatedTask });
         navigate("/")
     }
 
