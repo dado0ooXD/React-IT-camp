@@ -50,9 +50,9 @@ export const updateTodoItemData = async (id, data) => {
 
 // DELETE INDIVIDUAL ITEM
 
-export const deleteItem = async(id, data) => {
+export const deleteItem = async(id) => {
   const docRef = doc(db, "todo-list", id);
-  await deleteDoc(docRef, data)
+  await deleteDoc(docRef)
 }
 
 // CLEAR ALL TASKS
@@ -64,10 +64,10 @@ export const deleteAllItems = async () => {
   querySnapshot.forEach((doc) => {
     deleteDoc(doc.ref)
       .then(() => {
-      console.log("Document deleted successfully!")
+      console.log("Document is deleted!")
       })
       .catch(err => {
-      console.log("ERROR", err)
+      console.log("Error ", err)
     })
   })
 

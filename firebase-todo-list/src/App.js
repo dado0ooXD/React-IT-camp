@@ -50,7 +50,7 @@ function App() {
 
   // DELETING INDIVIDUAL ITEM
   const deleteItemHandler = (item) => {
-    deleteItem(item.id, item).then(() => {
+    deleteItem(item.id).then(() => {
       getAllTasks();
     });
   };
