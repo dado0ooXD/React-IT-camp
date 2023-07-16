@@ -87,14 +87,15 @@ function App() {
             +
           </Button>
         </Box>
-        <Box width="100%">
+        <Box width="100%" marginTop= "10px">
           {todo.map((item, index) => {
             return (
               <Box
                 style={{
+                  marginTop: "10px",
                   padding: "10px",
-                  borderBottom: "1px solid black",
-                  width: "100%",
+                  border: "1px solid gray",
+                  width: "90%",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-around",
@@ -108,17 +109,20 @@ function App() {
                   style={{
                     textDecoration: item.done ? "line-through" : "none",
                     cursor: "pointer",
+                    width: "100px"
                   }}
                 >
                   {item.title}
                 </Typography>
                 <Button onClick={() => {
                   deleteItemHandler(item)
-                }}>Delete</Button>
+                }}
+                variant = "contained" color = "error">Delete</Button>
               </Box>
             );
           })}
         </Box>
+        <Typography variant="p" marginTop= "25px">You have {todo.length } pending tasks.</Typography>
       </Box>
     </Box>
   );
