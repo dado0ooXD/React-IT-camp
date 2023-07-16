@@ -46,7 +46,7 @@ export const updateTodoItemData = async (id, data) => {
   return await updateDoc(docRef, data)
 }
 
-// DELETE ITEM
+// DELETE INDIVIDUAL ITEM
 
 export const deleteItem = async(id, data) => {
   const docRef = doc(db, "todo-list", id);

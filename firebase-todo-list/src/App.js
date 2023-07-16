@@ -1,6 +1,11 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { getTodoList, addItem, updateTodoItemData, deleteItem } from "./firebase";
+import {
+  getTodoList,
+  addItem,
+  updateTodoItemData,
+  deleteItem,
+} from "./firebase";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
 function App() {
@@ -37,19 +42,17 @@ function App() {
     });
   };
 
-
   // UPDATE
   const isDone = (item) => {
     updateTodoItemData(item.id, { done: !item.done }).then(() => getAllTasks());
   };
 
-
-   // DELETING INDIVIDUAL ITEM
+  // DELETING INDIVIDUAL ITEM
   const deleteItemHandler = (item) => {
     deleteItem(item.id, item).then(() => {
-      getAllTasks()
-     })
-   }
+      getAllTasks();
+    });
+  };
 
   return (
     <Box
@@ -87,7 +90,7 @@ function App() {
             +
           </Button>
         </Box>
-        <Box width="100%" marginTop= "10px">
+        <Box width="100%" marginTop="10px">
           {todo.map((item, index) => {
             return (
               <Box
@@ -95,7 +98,7 @@ function App() {
                   marginTop: "10px",
                   padding: "10px",
                   border: "1px solid gray",
-                  width: "90%",
+                  width: "92%",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-around",
@@ -109,20 +112,30 @@ function App() {
                   style={{
                     textDecoration: item.done ? "line-through" : "none",
                     cursor: "pointer",
-                    width: "100px"
+                    width: "100px",
                   }}
                 >
                   {item.title}
                 </Typography>
-                <Button onClick={() => {
-                  deleteItemHandler(item)
-                }}
-                variant = "contained" color = "error">Delete</Button>
+                <Button
+                  onClick={() => {
+                    deleteItemHandler(item);
+                  }}
+                  variant="contained"
+                  color="error"
+                >
+                  Delete
+                </Button>
               </Box>
             );
           })}
         </Box>
-        <Typography variant="p" marginTop= "25px">You have {todo.length } pending tasks.</Typography>
+        <Box marginTop="15px" display = "flex" justifyContent= "center"  flexDirection = "column">
+          <Typography variant="p">
+            You have {todo.length} pending tasks.
+          </Typography>
+          <Button variant="contained"  style={{marginTop: "15px"}}>Clear All</Button>
+        </Box>
       </Box>
     </Box>
   );
