@@ -37,10 +37,14 @@ function App() {
     });
   };
 
+
+  // UPDATE
   const isDone = (item) => {
     updateTodoItemData(item.id, { done: !item.done }).then(() => getAllTasks());
   };
 
+
+   // DELETING INDIVIDUAL ITEM
   const deleteItemHandler = (item) => {
     deleteItem(item.id, item).then(() => {
       getAllTasks()
