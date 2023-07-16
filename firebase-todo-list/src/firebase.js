@@ -50,5 +50,5 @@ export const updateTodoItemData = async (id, data) => {
 
 export const deleteItem = async(id, data) => {
   const docRef = doc(db, "todo-list", id);
- return await deleteDoc(docRef, data)
+  await deleteDoc(docRef, data)
 }

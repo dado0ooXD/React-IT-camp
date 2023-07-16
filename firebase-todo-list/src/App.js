@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     getAllTasks();
-    console.log(process.env.REACT_APP_DOMAIN);
+    // console.log(process.env.REACT_APP_DOMAIN);
   }, []);
 
   // ADD ITEM
@@ -42,7 +42,7 @@ function App() {
   };
 
   const deleteItemHandler = (item) => {
-    deleteItem(item.id, {title: ""}).then(() => {
+    deleteItem(item.id, item).then(() => {
       getAllTasks()
      })
    }
