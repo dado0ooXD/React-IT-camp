@@ -1,14 +1,13 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { getTodoList, addItem } from "./firebase";
+import { getTodoList, addItem, updateTodoItemData } from "./firebase";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
 function App() {
   const [taskName, setTaskName] = useState("");
   const [todo, setTodo] = useState([]);
 
-
-   // GET ITEMS
+  // GET ITEMS
 
   const getAllTasks = () => {
     getTodoList().then((data) => {
@@ -19,7 +18,7 @@ function App() {
 
   useEffect(() => {
     getAllTasks();
-    console.log(process.env.REACT_APP_DOMAIN)
+    console.log(process.env.REACT_APP_DOMAIN);
   }, []);
 
   // ADD ITEM
@@ -29,13 +28,17 @@ function App() {
       title: taskName,
       description: "",
       date: Date.now(),
-      done: false
-    }
+      done: false,
+    };
 
     addItem(newItem).then(() => {
       getAllTasks();
-      setTaskName("")
-    })
+      setTaskName("");
+    });
+  };
+
+  const isDone = (item) => {
+    updateTodoItemData(item.id, { done: !item.done }).then(() => getAllTasks());
   };
 
   return (
@@ -58,13 +61,17 @@ function App() {
       >
         <Typography variant="h4">Todo List</Typography>
         <Box display="flex" marginTop="15px">
-          <TextField type="text" value ={taskName} onChange={e => setTaskName(e.target.value)} />
+          <TextField
+            type="text"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+          />
           <Button
             variant="contained"
             style={{ marginLeft: "5px" }}
             color="primary"
             onClick={() => {
-              addTodo()
+              addTodo();
             }}
           >
             +
@@ -72,7 +79,20 @@ function App() {
         </Box>
         <Box>
           {todo.map((item, index) => {
-            return <Typography key = {index}>{item.title}</Typography>;
+            return (
+              <Typography
+                key={index}
+                onClick={() => {
+                  isDone(item);
+                }}
+                style={{
+                  textDecoration: item.done ? "line-through" : "none",
+                  cursor: "pointer",
+                }}
+              >
+                {item.title}
+              </Typography>
+            );
           })}
         </Box>
       </Box>
